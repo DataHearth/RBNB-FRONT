@@ -1,0 +1,108 @@
+.App {
+    text-align: center;
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+.App-header {
+    height: 100px;
+    display: flex;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    font-size: calc(8px + 2vmin);
+    /* color: white; */
+    border-bottom: 1px solid #dddddd;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
+
+.logo-header{
+    height: 100%;
+    width: 50%;
+    background-image: url("./images/logo-RBNB.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50px 0;
+}
+.menu-items{
+    font-family: 'Roboto Condensed', sans-serif;
+    text-align: right;
+    width: 50%;
+    align-self: center;
+}
+.items{
+    display: block;
+}
+.item {
+    padding: 10px;
+    cursor: pointer;
+    margin-right: 30px;
+}
+.item:hover {
+    color: #0194ff;
+}
+
+.collapse-menu{
+    display: none;
+    float: right;
+    margin-right: 10px;
+    /* background-color: gray; */
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+.line {
+    width: 100%;
+    height: 15%;
+    background-color: #008cff;
+    margin: 5px 0;
+}
+
+@media (min-width: 901px){
+    .items {
+        display: block !important;
+    }
+}
+
+
+@media (max-width: 900px){
+    .collapse-menu{
+        display: block;
+    }
+    .items {
+        display: none;
+        position: absolute;
+        background-color: #dddddd;
+        /* display: inline-grid; */
+        left: 0;
+        top: 100px;
+        width: 100vw;
+        text-align: center;
+    }
+    .item{
+        margin: 0;
+    }
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
