@@ -3,7 +3,7 @@ import $ from "jquery";
 $(document).ready(function(){
     
     $(".collapse-menu").click(()=>{
-        if($(".items")[0].style.display == "inline-grid"){
+        if($(".items")[0].style.display === "inline-grid"){
             $(".items").css("display", "none");
             $(".home").css("transform", "translateY(0)");
         }

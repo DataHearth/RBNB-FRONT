@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d222ecc0.chunk.css",
+    "main.js": "/static/js/main.07ee4307.chunk.js",
+    "main.js.map": "/static/js/main.07ee4307.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.686f8845.js",
+    "runtime-main.js.map": "/static/js/runtime-main.686f8845.js.map",
+    "static/js/2.2036f1bc.chunk.js": "/static/js/2.2036f1bc.chunk.js",
+    "static/js/2.2036f1bc.chunk.js.map": "/static/js/2.2036f1bc.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.c636d7ea922fa8627c68a7071a9c7b73.js": "/precache-manifest.c636d7ea922fa8627c68a7071a9c7b73.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.d222ecc0.chunk.css.map": "/static/css/main.d222ecc0.chunk.css.map",
+    "static/js/2.2036f1bc.chunk.js.LICENSE.txt": "/static/js/2.2036f1bc.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/vue-appartement-evian.e0f60ab7.jpg",
+    "static/media/logo.svg": "/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.686f8845.js",
+    "static/js/2.2036f1bc.chunk.js",
+    "static/css/main.d222ecc0.chunk.css",
+    "static/js/main.07ee4307.chunk.js"
+  ]
+}
