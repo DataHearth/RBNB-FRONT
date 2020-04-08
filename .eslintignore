@@ -1,0 +1,12 @@
+# Default folders
+node_modules
+public
+build
+
+# Firebase
+.firebase
+.firebaserc
+firebase.json
+
+# LICENSE
+LICENSE
