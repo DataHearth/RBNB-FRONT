@@ -1,7 +1,7 @@
-import $ from "jquery";
+import $ from 'jquery';
 
-$(document).ready(function(){
-    
-    // document.getElementById("city").value = city;
+$(document).ready(() => {
+
+  // document.getElementById("city").value = city;
 
 });
