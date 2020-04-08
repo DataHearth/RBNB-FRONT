@@ -2,6 +2,6 @@ import $ from "jquery";
 
 $(document).ready(function(){
     
-    document.getElementById("city").value = city
+    // document.getElementById("city").value = city;
 
 });
