@@ -127,6 +127,9 @@
 .custom-input-split{
     width: 46%;
 }
+.custom-input-split[type="date"] {
+    opacity: 0.8;
+}
 .custom-input-split:first-child{
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;

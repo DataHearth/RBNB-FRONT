@@ -1,9 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import './app-script.js';
+import './Home.css';
+import './home-script.js';
 
-function App() {
+function Home() {
     return ( 
     <div className="App">
         <header className="App-header">
@@ -45,8 +44,8 @@ function App() {
                             <div className="quick-search-item-input-title-split">Départ</div>
                         </div>
                         <div className="quick-search-item-input-input">
-                            <input className="custom-input custom-input-split" type="text" placeholder="jj/mm/aaaa"></input>
-                            <input className="custom-input custom-input-split" type="text" placeholder="jj/mm/aaaa"></input>
+                            <input className="custom-input custom-input-split" type="date" placeholder="jj/mm/aaaa"></input>
+                            <input className="custom-input custom-input-split" type="date" placeholder="jj/mm/aaaa"></input>
                         </div>
                     </div>
                     <div className="quick-search-item quick-search-item-input">
@@ -73,4 +72,4 @@ function App() {
     );
 }
 
-export default App;
+export default Home;
