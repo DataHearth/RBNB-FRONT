@@ -1,5 +1,4 @@
 import React from 'react';
-import {withRouter, Link} from 'react-router-dom';
 import './Home.css';
 import './home-script.js';
 
@@ -16,7 +15,7 @@ function Home() {
                 </div>
                 <div className="items">
                     <a className="item">Héberger</a>
-                    <Link className="item" to="/SingUp">Inscription</Link>
+                    <a className="item">Inscription</a>
                     <a className="item">Connexion</a>
                 </div>                
             </div>
@@ -73,4 +72,4 @@ function Home() {
     );
 }
 
-export default withRouter (Home);
+export default Home;
