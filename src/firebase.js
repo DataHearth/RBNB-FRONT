@@ -1,15 +1,6 @@
 import * as firebase from 'firebase';
+import firebaseConfig from './firebaseKey';
 
-const firebaseConfig = {
-    apiKey: "AIzaSyC0LngR2gR5xgL2msJWcuOkWubDx0ZJ81k",
-    authDomain: "rbnb-261207.firebaseapp.com",
-    databaseURL: "https://rbnb-261207.firebaseio.com",
-    projectId: "rbnb-261207",
-    storageBucket: "rbnb-261207.appspot.com",
-    messagingSenderId: "1068048606006",
-    appId: "1:1068048606006:web:6e041f5239f72765060997",
-    measurementId: "G-E4TPB2X597"
-  };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 //   firebase.analytics();
