@@ -46,9 +46,11 @@
     display: block;
 }
 .item {
-    padding: 10px;
-    cursor: pointer;
-    margin-right: 30px;
+  padding: 10px;
+  cursor: pointer;
+  margin-right: 30px;
+  text-decoration: none;
+  color: initial;
 }
 .item:hover {
     color: #0194ff;
