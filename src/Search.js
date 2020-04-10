@@ -2,11 +2,25 @@
 import React, { Component } from 'react';
 import './Search.css';
 import './search-script';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 class Search extends Component {
+  constructor(props) {
+    super(props);
+    this.city = this.props.match.params.city;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  resultMsg(city) {
+    let msg = '';
+
+    if (city === 'all') msg = 'Voici les resultats de toute la France';
+    else msg = `Voici les resultats pour ${city}`;
+
+    return msg;
+  }
+
   render() {
-    const { city } = this.props.match.params;
     return (
       <div className="App">
         <header className="App-header">
@@ -20,15 +34,66 @@ class Search extends Component {
               <div className="line" />
             </div>
             <div className="items">
-              <a className="item">Héberger</a>
-              <a className="item">Inscription</a>
-              <a className="item">Connexion</a>
+              <Link className="item" to="/">Héberger</Link>
+              <Link className="item" to="/signup">Inscription</Link>
+              <Link className="item" to="/">Connexion</Link>
             </div>
           </div>
         </header>
-        <div>
-          <h2>{this.props.match.params.city}</h2>
-        </div>
+
+        <section className="search-section">
+          <div>
+            <h3 style={{ textAlign: 'left' }}>{this.resultMsg(this.city)}</h3>
+          </div>
+          <div className="dwelling">
+            <div className="pic" />
+            <div className="text">
+              <div className="title-descr">
+                <div className="title">Studio idéal pour étudiant</div>
+                <div className="descr">
+                  2 étudiants - Studio - 1 lit - 1 canapé lit
+                  <br />
+                  1 salle de bain - Wifi - Chauffage
+                </div>
+              </div>
+              <div className="mark">
+                4.2
+              </div>
+            </div>
+          </div>
+          <div className="dwelling">
+            <div className="pic" />
+            <div className="text">
+              <div className="title-descr">
+                <div className="title">Studio idéal pour étudiant</div>
+                <div className="descr">
+                  2 étudiants - Studio - 1 lit - 1 canapé lit
+                  <br />
+                  1 salle de bain - Wifi - Chauffage
+                </div>
+              </div>
+              <div className="mark">
+                4.2
+              </div>
+            </div>
+          </div>
+          <div className="dwelling">
+            <div className="pic" />
+            <div className="text">
+              <div className="title-descr">
+                <div className="title">Studio idéal pour étudiant</div>
+                <div className="descr">
+                  2 étudiants - Studio - 1 lit - 1 canapé lit
+                  <br />
+                  1 salle de bain - Wifi - Chauffage
+                </div>
+              </div>
+              <div className="mark">
+                4.2
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     );
   }
