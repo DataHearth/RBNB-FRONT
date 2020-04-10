@@ -74,7 +74,7 @@ export async function register(data) {
 
     await setCurrentToken();
 
-    const response = await axios.put('localhost:8080/users', { ...data }, {
+    const response = await axios.put('localhost:8080/users', { data }, {
       headers: {
         'www-authenticate': await getAuthToken(),
       },
