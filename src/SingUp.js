@@ -30,70 +30,119 @@ class SingUp extends React.Component {
     return (
       <div className="App">
         <Header withSearchBar="false" />
-        <form className="form-horizontal" onSubmit={this.handleSubmit}>
-          <fieldset>
-            <div id="legend">
-              <legend className="">Identification</legend>
-            </div>
-            <div className="form-group">
-              <label htmlFor="email_user" className="col-md-4 control-label">Adresse mail *</label>
-              {' '}
-              <div className="col-md-6"><input id="email_user" type="email" name="email_user" value="" required="required" className="form-control" /></div>
-            </div>
-            <div className="control-group">
-              <label className="control-label" htmlFor="pseudo">Pseudo</label>
-              <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo" className="input-xlarge" />
-            </div>
-            <div className="control-group">
-              <label className="control-label" htmlFor="mail">Adresse mail</label>
-              <input type="text" id="mail" name="mail" placeholder="Mail" className="input-xlarge" />
-            </div>
-            <div className="control-group">
-              <label className="control-label" htmlFor="mdp">Mot de passe</label>
-              <input type="text" id="mdp" name="mdp" placeholder="Mot de passe" className="input-xlarge" />
-            </div>
-            <div className="control-group">
-              <label className="control-label" htmlFor="verif-mdp">Vérification mot de passe</label>
-              <input type="text" id="verif-mdp" name="verif-mdp" placeholder="Confirmer votre mot de passe" className="input-xlarge" />
-            </div>
-            Information :
-            <RadioGroup onChange={this.onChange} horizontal>
-              <RadioButton value="man">M.</RadioButton>
-              <RadioButton value="woman">Mme.</RadioButton>
-              <RadioButton value="other">Autre</RadioButton>
-            </RadioGroup>
-            <div className="control-group">
-              <label className="control-label" htmlFor="name">Nom</label>
-              <input type="text" id="name" name="name" placeholder="Nom" className="input-xlarge" />
-            </div>
-            <div className="control-group">
-              <label className="control-label" htmlFor="fisrtname">Prénom</label>
-              <input type="text" id="fisrtname" name="fisrtname" placeholder="Prénom" className="input-xlarge" />
-            </div>
-            <div className="control-group">
-              <label className="control-label" htmlFor="birthday">Date de naissance</label>
-              <input type="date" id="birthday" name="birthday" placeholder="" className="input-xlarge" />
-            </div>
-            <div className="control-group">
-              <label className="control-label" htmlFor="zip-code">Code postale</label>
-              <input type="text" id="zip-code" name="zip-code" placeholder="Code postal" className="input-xlarge" />
-            </div>
-            <div className="control-group">
-              <label className="control-label" htmlFor="city">Ville</label>
-              <input type="text" id="city" name="city" placeholder="Ville" className="input-xlarge" />
-            </div>
-            <div className="control-group">
-              <label className="control-label" htmlFor="country">Pays</label>
-              <input type="text" id="country" name="country" placeholder="Pays" className="input-xlarge" />
-            </div>
-            <div className="control-group">
-              <div className="controls">
-                <Link className="item" to="/">Return</Link>
-                <button className="btn btn-success">Confirmer</button>
+        <section className="signup-section">
+          <form className="form-horizontal" onSubmit={this.handleSubmit}>
+            <div className="form-row">
+              <div className="col-md-4 mb-3">
+                <label htmlFor="prenom">Prénom</label>
+                <input type="text" className="form-control" id="prenom" placeholder="Pierre" required />
+                <div className="valid-feedback">Ok !</div>
+                <div className="invalid-feedback">Valeur incorrecte</div>
+              </div>
+              <div className="col-md-4 mb-3">
+                <label htmlFor="nom">Nom de famille</label>
+                <input type="text" className="form-control" id="nom" placeholder="Giraud" required />
+                <div className="valid-feedback">Ok !</div>
+                <div className="invalid-feedback">Valeur incorrecte</div>
+              </div>
+              <div className="col-md-4 mb-3">
+                <label htmlFor="pseudo">Pseudo</label>
+                <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                <div className="valid-feedback">Ok !</div>
+                <div className="invalid-feedback">Valeur incorrecte</div>
+              </div>
+              <div className="col-md-4 mb-3">
+                <label htmlFor="pseudo">Adresse mail *</label>
+                <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                <div className="valid-feedback">Ok !</div>
+                <div className="invalid-feedback">Valeur incorrecte</div>
+              </div>
+              <div className="col-md-4 mb-3">
+                <label htmlFor="pseudo">Confirmation Adresse mail</label>
+                <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                <div className="valid-feedback">Ok !</div>
+                <div className="invalid-feedback">Valeur incorrecte</div>
+              </div>
+              <div className="col-md-4 mb-3">
+                <label htmlFor="pseudo">Mot de passe</label>
+                <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                <div className="valid-feedback">Ok !</div>
+                <div className="invalid-feedback">Valeur incorrecte</div>
+              </div>
+              <div className="col-md-4 mb-3">
+                <label htmlFor="pseudo">Confirmation du mot de passe</label>
+                <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                <div className="valid-feedback">Ok !</div>
+                <div className="invalid-feedback">Valeur incorrecte</div>
+              </div>
+              <div className="col-md-4 mb-3">
+                <label htmlFor="pseudo">Date de naissance</label>
+                <input type="date" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                <div className="valid-feedback">Ok !</div>
+                <div className="invalid-feedback">Valeur incorrecte</div>
+              </div>
+              <div className="col-md-4 mb-3">
+                <label htmlFor="pseudo">Sexe</label>
+                <div className="form-check form-check-inline form-control" style={{ justifyContent: 'center' }}>
+                  <div className="form-check form-check-inline">
+                    <input className="form-check-input" type="radio" name="radio" id="radio1" value="option1" />
+                    <label className="form-check-label" htmlFor="radio1">Option 1</label>
+                  </div>
+                  <div className="form-check form-check-inline">
+                    <input className="form-check-input" type="radio" name="radio" id="radio2" value="option2" />
+                    <label className="form-check-label" htmlFor="radio2">Option 2</label>
+                  </div>
+                </div>
               </div>
             </div>
-          </fieldset>
-        </form>
+            <div className="form-row">
+              <div className="col-md-4 mb-3">
+                <label htmlFor="pseudo">Pays</label>
+                <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                <div className="valid-feedback">Ok !</div>
+                <div className="invalid-feedback">Valeur incorrecte</div>
+              </div>
+              <div className="col-md-4 mb-3">
+                <label htmlFor="pseudo">Code postal</label>
+                <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                <div className="valid-feedback">Ok !</div>
+                <div className="invalid-feedback">Valeur incorrecte</div>
+              </div>
+              <div className="col-md-4 mb-3">
+                <label htmlFor="pseudo">Ville</label>
+                <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                <div className="valid-feedback">Ok !</div>
+                <div className="invalid-feedback">Valeur incorrecte</div>
+              </div>
+            </div>
+            <div className="form-group">
+              <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="cgu" required />
+                <label className="form-check-label" htmlFor="cgu">J'accepte les conditions générales d'utilisation et de vente</label>
+                <div className="invalid-feedback">Vous devez accepter les CGU pour continuer</div>
+              </div>
+            </div>
+            <button className="btn btn-primary" type="submit">Envoyer</button>
+          </form>
+          <script>
+            {
+             (function () {
+               window.addEventListener('load', () => {
+                 const forms = document.getElementsByClassName('needs-validation');
+                 const validation = Array.prototype.filter.call(forms, (form) => {
+                   form.addEventListener('submit', (event) => {
+                     if (form.checkValidity() === false) {
+                       event.preventDefault();
+                       event.stopPropagation();
+                     }
+                     form.classList.add('was-validated');
+                   }, false);
+                 });
+               }, false);
+             }())
+           }
+          </script>
+        </section>
       </div>
     );
   }
