@@ -27,7 +27,7 @@ class Header extends Component {
             <div className="line" />
           </div>
           <div className="items">
-            <Link className="item" to="/">Héberger</Link>
+            <Link className="item" to="/host">Héberger</Link>
             <Link className="item" to="/signup">Inscription</Link>
             <Link className="item" to="/">Connexion</Link>
           </div>
