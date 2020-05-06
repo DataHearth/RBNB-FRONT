@@ -1,18 +1,19 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import './Search.css';
-import './search-script';
-import { withRouter, Link } from 'react-router-dom';
-import axios from 'axios';
+import './css/search.css';
+import './js/searchScript';
+import { withRouter } from 'react-router-dom';
 import Header from './Header';
-import DwellingItem from './DwellingItem';
-
 
 class Search extends Component {
   constructor(props) {
     super(props);
-    this.city = this.props.match.params.city;
+    // eslint-disable-next-line react/prop-types
+    const { match } = this.props;
+    // eslint-disable-next-line react/prop-types
+    this.city = match.params.city;
     this.state = {
+      // eslint-disable-next-line react/no-unused-state
       dwellings: [],
     };
   }
@@ -27,7 +28,6 @@ class Search extends Component {
     return msg;
   }
 
-  
   // getAllDwellings() {
   //   axios.get('https://rbnb-back.herokuapp.com/dwellings')
   //     .then((res) => {

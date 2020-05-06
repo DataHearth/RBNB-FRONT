@@ -1,8 +1,9 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import Header from './Components/Header';
+import './Search.css';
 import './js/searchScript';
+import { withRouter } from 'react-router-dom';
+import Header from './Header';
 
 
 class Host extends Component {
