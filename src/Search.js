@@ -12,7 +12,9 @@ class Search extends Component {
   constructor(props) {
     super(props);
     this.city = this.props.match.params.city;
-    this.state = {};
+    this.state = {
+      dwellings: [],
+    };
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -25,34 +27,31 @@ class Search extends Component {
     return msg;
   }
 
-  getDwellings() {
-    axios.get('http://localhost:8080/dwellings')
-      .then((res) => {
-        const dwellings = res.data;
-        this.setState({dwellings});
-        return dwellings;
-      });
-  }
+  
+  // getAllDwellings() {
+  //   axios.get('https://rbnb-back.herokuapp.com/dwellings')
+  //     .then((res) => {
+  //       const dwellingsTab = res.data;
+  //       this.setState({
+  //         dwellings: dwellingsTab,
+  //       });
+  //     });
+  //   const dwellings = this.state.dwellings.map((dwelling) => (
+  //     <DwellingItem key={dwelling.id} dwelling={dwelling} />
+  //   ));
+  //   return dwellings;
+  // }
+
 
   render() {
-    axios.get('http://localhost:8080/dwellings')
-      .then((res) => {
-        const dwellings = res.data;
-        dwellings.map(dwelling => {
-          return(
-            
-          );
-        })
-      });
     return (
       <div className="App">
         <Header withSearchBar="true" />
-
         <section className="search-section">
           <div>
             <h3 style={{ textAlign: 'left' }}>{this.resultMsg(this.city)}</h3>
           </div>
-          <DwellingItem />
+          {/* {this.getAllDwellings()} */}
         </section>
       </div>
     );

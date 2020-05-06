@@ -230,11 +230,6 @@
     }
 }
 
-/* SIGN UP PAGE */
-.signup-section{
-  padding: 20px 50px;
-}
-
 /* SEARCH PAGE */
 .search-section{
   padding: 20px 50px;
@@ -244,15 +239,80 @@
 .host-section{
   padding: 20px 50px;
 }
-.section-title{
-  margin-bottom: 30px;
-}
-  .form-horizontal{
-    text-align: left;
+
+  .quick-search-item{
+      height: 20%;
+      text-align: left;
   }
-  .row{
-    /* margin: 0; */
+  .quick-search-item-title {
+      font-size: 24px;
+      text-align: right;
+      font-weight: bold;
   }
-  .col-lg-6{
-    padding: 0;
+  .quick-search-item-input-title {
+      display: flex;
+      /* text-align: left; */
+      opacity: 0.8;
+      height: 50%;
+      align-items: flex-end;
+  }
+  .quick-search-item-input-input{
+      height: 50%;
+  }
+  .quick-search-item-input-title-split{
+      width: 50%;
+  }
+  .custom-input {
+      width: calc(100% - 10px);
+      height: 30px;
+      border-radius: 6px;
+      border: 1px solid #e8e8e8;
+      padding-left: 10px;
+  }
+  .custom-input-for-search {
+      align-self: center;
+      width: 275px;
+      height: 30px;
+      border-radius: 6px;
+      border: 1px solid #e8e8e8;
+      padding-left: 10px;
+      /* left: 50px; */
+      margin-left: 200px;
+  }
+  .custom-input-split{
+      width: 46%;
+  }
+  .custom-input-split[type="date"] {
+      opacity: 0.8;
+  }
+  .custom-input-split:first-child{
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+  }
+  .custom-input-split:last-child{
+      border-left: none;
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+  }
+  .quick-search-item-button {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+  }
+  .quick-search-item-button-button {
+      /* text-align: center; */
+      width: 100%;
+  }
+  .host-input > form > div{
+    margin-bottom: 20px;
+    width: 50%;
+  }
+  .host-input > form > div:first-child{
+    margin-right: 30px;
+  }
+  .smoking-radio-btn{
+    margin-right: 10px;
+  }
+  .services-checkbox{
+    margin-right: 10px;
   }

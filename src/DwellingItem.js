@@ -6,16 +6,20 @@ import { withRouter, Link } from 'react-router-dom';
 
 class DwellingItem extends Component {
   render() {
+    // console.log(this.props.dwelling);
+    let background_url = "";
+    if(this.props.dwelling.pictures != undefined)
+      background_url = this.props.dwelling.pictures[0];
     return (
       <div className="dwelling">
         <div className="pic" />
         <div className="text">
           <div className="title-descr">
-            <div className="title">Studio idéal pour étudiant</div>
+            <div className="title">{this.props.dwelling.title}</div>
             <div className="descr">
-              2 étudiants - Studio - 1 lit - 1 canapé lit
+              {this.props.dwelling.resident} étudiants - Studio - {this.props.dwelling.rooms} chambres
               <br />
-              1 salle de bain - Wifi - Chauffage
+              {this.props.dwelling.services}
             </div>
           </div>
           <div className="mark">
