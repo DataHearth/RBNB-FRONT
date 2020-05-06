@@ -13,142 +13,110 @@ class Host extends Component {
       <div className="App">
         <Header withSearchBar="false" />
         <section className="host-section">
-          <div>
+          <div className="section-title">
             <h3 style={{ textAlign: 'left' }}>Devenir hôte</h3>
           </div>
-          <div className="host-input">
-            <form id="host-form" style={{display: 'flex'}}>
-              <div>
-                <div className="quick-search-item quick-search-item-input">
-                  <div className="quick-search-item-input-title">Titre de l'annonce</div>
-                  <div className="quick-search-item-input-input">
-                    <input id="city" className="custom-input" type="text" placeholder="Votre titre" />
+          <form className="form-horizontal" role="form">
+            <div className="row">
+              <div className="col-lg-6">
+
+                <div className="form-group">
+                  <label htmlFor="civilite" className="col-sm-3 control-label">Civilité :</label>
+                  <div className="col-sm-8">
+                    <input type="text" className="form-control" lname="civilite;" id="civilite" required="" />
                   </div>
                 </div>
-                <div className="quick-search-item quick-search-item-input" style={{ marginBottom: '70px' }}>
-                  <div className="quick-search-item-input-title">Description</div>
-                  <div className="quick-search-item-input-input">
-                    <textarea className="custom-input" style={{ height: '100px' }} placeholder="Votre description" />
+                <div className="form-group">
+                  <label htmlFor="nom" className="col-sm-3 control-label">Nom :</label>
+                  <div className="col-sm-8">
+                    <input type="text" className="form-control" name="name" id="name" required="" />
                   </div>
                 </div>
-                <div className="quick-search-item quick-search-item-input">
-                  <div className="quick-search-item-input-title">Adresse de l'annonce</div>
-                  <div className="quick-search-item-input-input">
-                    <input id="city" className="custom-input" type="text" placeholder="Adresse du logement" />
+                <div className="form-group">
+                  <label htmlFor="prenom" className="col-sm-3 control-label">Prenom :</label>
+                  <div className="col-sm-8">
+                    <input type="text" className="form-control" name="prenom" id="prenom" required="" />
                   </div>
                 </div>
-                <div className="quick-search-item quick-search-item-input">
-                  <div className="quick-search-item-input-title">Nombre de chambre(s)</div>
-                  <div className="quick-search-item-input-input">
-                    <select className="custom-input" placeholder="Partout">
-                      <option>Selectionner un nombre</option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
+                <div className="form-group">
+                  <label htmlFor="mail" className="col-sm-3 control-label">Email :</label>
+                  <div className="col-sm-8">
+                    <input type="email" className="form-control" name="email" id="email" required="" />
                   </div>
                 </div>
-                <div className="quick-search-item quick-search-item-input">
-                  <div className="quick-search-item-input-title">Nombre de resident(s)</div>
-                  <div className="quick-search-item-input-input">
-                    <select className="custom-input" placeholder="Partout">
-                      <option>Selectionner un nombre</option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
+                <div className="form-group">
+                  <label htmlFor="tel" className="col-sm-3 control-label">Téléphone :</label>
+                  <div className="col-sm-8">
+                    <input type="text" className="form-control" name="tel" id="tel" required="" />
                   </div>
                 </div>
-                <div className="quick-search-item quick-search-item-input">
-                  <div className="quick-search-item-input-title">Fumeur</div>
-                  <div className="quick-search-item-input-input" style={{ display: 'flex' }}>
-                    <div className="smoking-radio-btn">
-                      <input
-                        type="radio"
-                        id="smoking-yes"
-                        name="smoking"
-                        value="yes"
-                        checked
-                      />
-                      <label htmlFor="smoking-yes">Oui</label>
-                    </div>
-                    <div>
-                      <input
-                        type="radio"
-                        id="smoking-no"
-                        name="smoking"
-                        value="no"
-                        checked
-                      />
-                      <label htmlFor="smoking-no">Non</label>
-                    </div>
-                  </div>
-                </div>
-                <div className="quick-search-item quick-search-item-input">
-                  <div className="quick-search-item-input-title">Services proposés</div>
-                  <div className="quick-search-item-input-input" style={{ display: 'flex' }}>
-                    <div className="services-checkbox">
-                      <input
-                        type="checkbox"
-                        id="service-1"
-                        name="service-1"
-                      />
-                      <label htmlFor="service-1">Micro-ondes</label>
-                    </div>
-                    <div className="services-checkbox">
-                      <input
-                        type="checkbox"
-                        id="service-2"
-                        name="service-2"
-                      />
-                      <label htmlFor="service-2">Lave-vaisselle</label>
-                    </div>
-                    <div className="services-checkbox">
-                      <input
-                        type="checkbox"
-                        id="service-3"
-                        name="service-3"
-                      />
-                      <label htmlFor="service-3">Lave-linge</label>
-                    </div>
-                    <div className="services-checkbox">
-                      <input
-                        type="checkbox"
-                        id="service-4"
-                        name="service-4"
-                      />
-                      <label htmlFor="service-4">Four</label>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="service-5"
-                        name="service-5"
-                      />
-                      <label htmlFor="service-5">Piscine</label>
-                    </div>
+                <div className="form-group">
+                  <label htmlFor="mobile" className="col-sm-3 control-label">Mobile :</label>
+                  <div className="col-sm-8">
+                    <input type="text" className="form-control" name="mobile" id="mobile" required="" />
                   </div>
                 </div>
               </div>
-              <div>
-                <div className="quick-search-item quick-search-item-input">
-                  <div className="quick-search-item-input-title">Selectionner une photo</div>
-                  <div className="quick-search-item-input-input">
-                    <input
-                      type="file"
-                      id="pictures"
-                      name="pictures"
-                      accept="image/png, image/jpeg"
-                    />
+              <div className="col-lg-6">
+                <div className="form-group">
+                  <label htmlFor="societe" className="col-sm-3 control-label">Société</label>
+                  <div className="col-sm-8">
+                    <input type="text" className="form-control" name="societe" id="societe" required="" />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="adresse" className="col-sm-3 control-label">Adresse</label>
+                  <div className="col-sm-8">
+                    <input type="text" className="form-control" name="adresse" id="adresse" required="" />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="cp" className="col-sm-3 control-label">Code Postal</label>
+                  <div className="col-sm-8">
+                    <input type="text" className="form-control" name="cp" id="cp" />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="ville" className="col-sm-3 control-label">Ville</label>
+                  <div className="col-sm-8">
+                    <input type="text" name="ville" className="form-control" id="ville" />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="pays" className="col-sm-3 control-label">Pays</label>
+                  <div className="col-sm-8">
+                    <input type="text" className="form-control" name="pays" id="pays" />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <div className="checkbox inline">
+                    <label>
+                      <input type="checkbox" value="" checked="" />
+                      <span className="cc"><i className="cc-icon glyphicon glyphicon-ok" /></span>
+                      {' '}
+                      Option1
+                    </label>
+                  </div>
+                  <div className="checkbox inline">
+                    <label>
+                      <input type="checkbox" value="" checked="" />
+                      <span className="cc"><i className="cc-icon glyphicon glyphicon-ok" /></span>
+                      {' '}
+                      Option 2
+                    </label>
+                  </div>
+                  <div className="checkbox inline">
+                    <label>
+                      <input type="checkbox" value="" checked="" />
+                      <span className="cc"><i className="cc-icon glyphicon glyphicon-ok" /></span>
+                      {' '}
+                      Option 3
+                    </label>
                   </div>
                 </div>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </section>
       </div>
     );
