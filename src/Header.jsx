@@ -1,17 +1,16 @@
-/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-// import './Header.css';
-// import './header-script';
 import { withRouter, Link } from 'react-router-dom';
-import logger from './lib/logger';
 
 class Header extends Component {
   displayTopSearchBar() {
-    if (this.props.withSearchBar == 'true') {
-      return (
-        <input id="city" className="custom-input-for-search" type="text" placeholder="Partout" />
-      );
+    // eslint-disable-next-line react/prop-types
+    if (this.props.withSearchBar !== 'true') { // eslint-disable-line react/destructuring-assignment
+      return null;
     }
+
+    return (
+      <input id="city" className="custom-input-for-search" type="text" placeholder="Partout" />
+    );
   }
 
   render() {

@@ -1,8 +1,5 @@
-import React, { Component } from 'react';
-import { withRouter, Link } from 'react-router-dom';
-import { RadioGroup, RadioButton } from 'react-radio-buttons';
-import './SingUp.css';
-import './singup-script.js';
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 import Header from './Header';
 
 class SingUp extends React.Component {
@@ -14,12 +11,16 @@ class SingUp extends React.Component {
   }
 
   handleChange(event) {
+    // eslint-disable-next-line react/no-unused-state
     this.setState({ value: event.target.value });
   }
 
   handleSubmit(event) {
-    if (document.querySelector("input[name='password']") == document.querySelector("input[name='passwordVerif']")) {
-      alert(this.state.valuepwd1);
+    const password = document.querySelector("input[name='password']");
+    const verif = document.querySelector("input[name='passwordVerif']");
+    if (password === verif) {
+      const { state } = this;
+      alert(state.valuepwd1);
     } else {
       alert('erreur');
     }
@@ -34,50 +35,66 @@ class SingUp extends React.Component {
           <form className="form-horizontal" onSubmit={this.handleSubmit}>
             <div className="form-row">
               <div className="col-md-4 mb-3">
-                <label htmlFor="prenom">Prénom</label>
-                <input type="text" className="form-control" id="prenom" placeholder="Pierre" required />
+                <label htmlFor="prenom">
+                  Prénom
+                  <input type="text" className="form-control" id="prenom" placeholder="Pierre" required />
+                </label>
                 <div className="valid-feedback">Ok !</div>
                 <div className="invalid-feedback">Valeur incorrecte</div>
               </div>
               <div className="col-md-4 mb-3">
-                <label htmlFor="nom">Nom de famille</label>
-                <input type="text" className="form-control" id="nom" placeholder="Giraud" required />
+                <label htmlFor="nom">
+                  Nom de famille
+                  <input type="text" className="form-control" id="nom" placeholder="Giraud" required />
+                </label>
                 <div className="valid-feedback">Ok !</div>
                 <div className="invalid-feedback">Valeur incorrecte</div>
               </div>
               <div className="col-md-4 mb-3">
-                <label htmlFor="pseudo">Pseudo</label>
-                <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                <label htmlFor="pseudo">
+                  Pseudo
+                  <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                </label>
                 <div className="valid-feedback">Ok !</div>
                 <div className="invalid-feedback">Valeur incorrecte</div>
               </div>
               <div className="col-md-4 mb-3">
-                <label htmlFor="pseudo">Adresse mail *</label>
-                <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                <label htmlFor="pseudo">
+                  Adresse mail *
+                  <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                </label>
                 <div className="valid-feedback">Ok !</div>
                 <div className="invalid-feedback">Valeur incorrecte</div>
               </div>
               <div className="col-md-4 mb-3">
-                <label htmlFor="pseudo">Confirmation Adresse mail</label>
-                <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                <label htmlFor="pseudo">
+                  Confirmation Adresse mail
+                  <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                </label>
                 <div className="valid-feedback">Ok !</div>
                 <div className="invalid-feedback">Valeur incorrecte</div>
               </div>
               <div className="col-md-4 mb-3">
-                <label htmlFor="pseudo">Mot de passe</label>
-                <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                <label htmlFor="pseudo">
+                  Mot de passe
+                  <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                </label>
                 <div className="valid-feedback">Ok !</div>
                 <div className="invalid-feedback">Valeur incorrecte</div>
               </div>
               <div className="col-md-4 mb-3">
-                <label htmlFor="pseudo">Confirmation du mot de passe</label>
-                <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                <label htmlFor="pseudo">
+                  Confirmation du mot de passe
+                  <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                </label>
                 <div className="valid-feedback">Ok !</div>
                 <div className="invalid-feedback">Valeur incorrecte</div>
               </div>
               <div className="col-md-4 mb-3">
-                <label htmlFor="pseudo">Date de naissance</label>
-                <input type="date" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                <label htmlFor="pseudo">
+                  Date de naissance
+                  <input type="date" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                </label>
                 <div className="valid-feedback">Ok !</div>
                 <div className="invalid-feedback">Valeur incorrecte</div>
               </div>
@@ -85,40 +102,52 @@ class SingUp extends React.Component {
                 <label htmlFor="pseudo">Sexe</label>
                 <div className="form-check form-check-inline form-control" style={{ justifyContent: 'center' }}>
                   <div className="form-check form-check-inline">
-                    <input className="form-check-input" type="radio" name="radio" id="radio1" value="option1" />
-                    <label className="form-check-label" htmlFor="radio1">Option 1</label>
+                    <label className="form-check-label" htmlFor="radio1">
+                      <input className="form-check-input" type="radio" name="radio" id="radio1" value="option1" />
+                      Option 1
+                    </label>
                   </div>
                   <div className="form-check form-check-inline">
-                    <input className="form-check-input" type="radio" name="radio" id="radio2" value="option2" />
-                    <label className="form-check-label" htmlFor="radio2">Option 2</label>
+                    <label className="form-check-label" htmlFor="radio2">
+                      <input className="form-check-input" type="radio" name="radio" id="radio2" value="option2" />
+                      Option 2
+                    </label>
                   </div>
                 </div>
               </div>
             </div>
             <div className="form-row">
               <div className="col-md-4 mb-3">
-                <label htmlFor="pseudo">Pays</label>
-                <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                <label htmlFor="pseudo">
+                  <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                  Pays
+                </label>
                 <div className="valid-feedback">Ok !</div>
                 <div className="invalid-feedback">Valeur incorrecte</div>
               </div>
               <div className="col-md-4 mb-3">
-                <label htmlFor="pseudo">Code postal</label>
-                <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                <label htmlFor="pseudo">
+                  <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                  Code postal
+                </label>
                 <div className="valid-feedback">Ok !</div>
                 <div className="invalid-feedback">Valeur incorrecte</div>
               </div>
               <div className="col-md-4 mb-3">
-                <label htmlFor="pseudo">Ville</label>
-                <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                <label htmlFor="pseudo">
+                  <input type="text" className="form-control" id="pseudo" placeholder="PierreGird" required />
+                  Ville
+                </label>
                 <div className="valid-feedback">Ok !</div>
                 <div className="invalid-feedback">Valeur incorrecte</div>
               </div>
             </div>
             <div className="form-group">
               <div className="form-check">
-                <input className="form-check-input" type="checkbox" value="" id="cgu" required />
-                <label className="form-check-label" htmlFor="cgu">J'accepte les conditions générales d'utilisation et de vente</label>
+                <label className="form-check-label" htmlFor="cgu">
+                  J&apos;accepte les conditions générales d&apos;utilisation et de vente
+                  <input className="form-check-input" type="checkbox" value="" id="cgu" required />
+                </label>
                 <div className="invalid-feedback">Vous devez accepter les CGU pour continuer</div>
               </div>
             </div>

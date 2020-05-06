@@ -1,19 +1,21 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import './Home.css';
-import './home-script';
-import { render } from '@testing-library/react';
-import { withRouter, Link } from 'react-router-dom';
+import './css/home.css';
+import './js/home';
+import { withRouter } from 'react-router-dom';
 import $ from 'jquery';
-import logger from './lib/logger';
-import Search from './Search';
 import Header from './Header';
 
 class Home extends Component {
   submitForm(e) {
     e.preventDefault();
     const city = $('#city')[0].value;
-    if (city !== '') this.props.history.push(`/search/${city}`);
-    else this.props.history.push('/search/all');
+    const { history } = this.props;
+    if (city !== '') {
+      history.push(`/search/${city}`);
+    } else {
+      history.push('/search/all');
+    }
   }
 
   render() {
@@ -23,8 +25,12 @@ class Home extends Component {
         <section className="home">
           <div className="home-contain home-contain-left">
             <div className="home-description">
-              <h3>Qu'est ce que RBNB ?</h3>
-              <p>RBNB est une plateforme qui s'adresse uniquement aux étudiants. Elle leur permet de louer un logement simplement et en toute tranquillité, afin de faciliter au maximum leur recherche de logement.</p>
+              <h3>Qu&apos;est ce que RBNB ?</h3>
+              <p>
+                RBNB est une plateforme qui s&apos;adresse uniquement aux étudiants.
+                Elle leur permet de louer un logement simplement et en toute tranquillité,
+                afin de faciliter au maximum leur recherche de logement.
+              </p>
             </div>
           </div>
           <div className="home-contain home-contain-right">
@@ -50,7 +56,7 @@ class Home extends Component {
                   </div>
                 </div>
                 <div className="quick-search-item quick-search-item-input">
-                  <div className="quick-search-item-input-title">Nombre d'étudiant(s)</div>
+                  <div className="quick-search-item-input-title">Nombre d&apos;étudiant(s)</div>
                   <div className="quick-search-item-input-input">
                     <select className="custom-input" placeholder="Partout">
                       <option>1</option>

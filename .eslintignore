@@ -6,7 +6,6 @@ build
 # Firebase
 .firebase
 .firebaserc
-firebase.json
 
 # LICENSE
 LICENSE

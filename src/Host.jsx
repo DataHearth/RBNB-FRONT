@@ -1,9 +1,8 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import './Search.css';
-import './search-script';
-import { withRouter, Link } from 'react-router-dom';
-import axios from 'axios';
+import './js/searchScript';
+import { withRouter } from 'react-router-dom';
 import Header from './Header';
 
 
@@ -16,7 +15,7 @@ class Host extends Component {
           <div className="section-title">
             <h3 style={{ textAlign: 'left' }}>Devenir hôte</h3>
           </div>
-          <form className="form-horizontal" role="form">
+          <form className="form-horizontal">
             <div className="row">
               <div className="col-lg-6">
 
