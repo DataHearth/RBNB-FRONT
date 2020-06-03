@@ -99,21 +99,23 @@ class SingUp extends React.Component {
                 <div className="invalid-feedback">Valeur incorrecte</div>
               </div>
               <div className="col-md-4 mb-3">
-                <label htmlFor="pseudo">Sexe</label>
-                <div className="form-check form-check-inline form-control" style={{ justifyContent: 'center' }}>
-                  <div className="form-check form-check-inline">
-                    <label className="form-check-label" htmlFor="radio1">
-                      <input className="form-check-input" type="radio" name="radio" id="radio1" value="option1" />
-                      Option 1
-                    </label>
+                <label htmlFor="pseudo">
+                  Sexe
+                  <div className="form-check form-check-inline form-control" style={{ justifyContent: 'center' }}>
+                    <div className="form-check form-check-inline">
+                      <label className="form-check-label" htmlFor="radio1">
+                        <input className="form-check-input" type="radio" name="radio" id="radio1" value="option1" />
+                        Option 1
+                      </label>
+                    </div>
+                    <div className="form-check form-check-inline">
+                      <label className="form-check-label" htmlFor="radio2">
+                        <input className="form-check-input" type="radio" name="radio" id="radio2" value="option2" />
+                        Option 2
+                      </label>
+                    </div>
                   </div>
-                  <div className="form-check form-check-inline">
-                    <label className="form-check-label" htmlFor="radio2">
-                      <input className="form-check-input" type="radio" name="radio" id="radio2" value="option2" />
-                      Option 2
-                    </label>
-                  </div>
-                </div>
+                </label>
               </div>
             </div>
             <div className="form-row">
@@ -153,27 +155,10 @@ class SingUp extends React.Component {
             </div>
             <button className="btn btn-primary" type="submit">Envoyer</button>
           </form>
-          <script>
-            {
-             (function () {
-               window.addEventListener('load', () => {
-                 const forms = document.getElementsByClassName('needs-validation');
-                 const validation = Array.prototype.filter.call(forms, (form) => {
-                   form.addEventListener('submit', (event) => {
-                     if (form.checkValidity() === false) {
-                       event.preventDefault();
-                       event.stopPropagation();
-                     }
-                     form.classList.add('was-validated');
-                   }, false);
-                 });
-               }, false);
-             }())
-           }
-          </script>
         </section>
       </div>
     );
   }
 }
+
 export default withRouter(SingUp);
