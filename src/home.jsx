@@ -7,6 +7,11 @@ import $ from 'jquery';
 import Header from './Header';
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.submitForm = this.submitForm.bind(this);
+  }
+
   submitForm(e) {
     e.preventDefault();
     const city = $('#city')[0].value;
@@ -34,7 +39,7 @@ class Home extends Component {
             </div>
           </div>
           <div className="home-contain home-contain-right">
-            <form onSubmit={this.submitForm.bind(this)}>
+            <form onSubmit={this.submitForm}>
               <div className="quick-search">
                 <div className="quick-search-item quick-search-item-title">
                   Réserver des logements et bien plus encore
@@ -69,7 +74,7 @@ class Home extends Component {
                 </div>
                 <div className="quick-search-item quick-search-item-button">
                   <div className="quick-search-item-button-button">
-                    <button type="button" className="custom-button">Rechercher</button>
+                    <button type="submit" className="custom-button">Rechercher</button>
                   </div>
                 </div>
               </div>
