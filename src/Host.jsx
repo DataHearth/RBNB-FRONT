@@ -1,6 +1,6 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import './Search.css';
+import './css/search.css';
 import './js/searchScript';
 import { withRouter } from 'react-router-dom';
 import Header from './Header';
@@ -87,7 +87,7 @@ class Host extends Component {
                     <input type="text" className="form-control" name="pays" id="pays" />
                   </div>
                 </div>
-                <div className="form-group">
+                {/* <div className="form-group">
                   <div className="checkbox inline">
                     <label>
                       <input type="checkbox" value="" checked="" />
@@ -106,13 +106,13 @@ class Host extends Component {
                   </div>
                   <div className="checkbox inline">
                     <label>
-                      <input type="checkbox" value="" checked="" />
+                      <input type="checkbox" value={this.state.myValue} onChange={this.handleChange} checked="" />
                       <span className="cc"><i className="cc-icon glyphicon glyphicon-ok" /></span>
                       {' '}
                       Option 3
                     </label>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </form>

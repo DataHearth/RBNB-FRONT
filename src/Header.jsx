@@ -7,7 +7,6 @@ class Header extends Component {
     if (this.props.withSearchBar !== 'true') { // eslint-disable-line react/destructuring-assignment
       return null;
     }
-
     return (
       <input id="city" className="custom-input-for-search" type="text" placeholder="Partout" />
     );
@@ -17,6 +16,9 @@ class Header extends Component {
     return (
       <header className="App-header">
         <div className="logo-header">
+          <a href="http://localhost:3000">
+            <img id="logo-rbnb" src="http://localhost:3000/static/media/logo-RBNB.0aa157cc.png" />
+          </a>
           {this.displayTopSearchBar()}
         </div>
         <div className="menu-items">

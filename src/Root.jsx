@@ -12,6 +12,7 @@ export default () => (
       <Route component={Home} exact path="/" />
       <Route component={Singup} exact path="/signup" />
       <Route component={Search} path="/search/:city" />
+      <Route component={Host} path="/host" />
     </Switch>
   </BrowserRouter>
 );

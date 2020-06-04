@@ -30,11 +30,16 @@
 .logo-header{
     height: 100%;
     width: 50%;
-    background-image: url("../images/logo-RBNB.png");
+    /* background-image: url("../images/logo-RBNB.png"); */
     background-repeat: no-repeat;
     background-size: contain;
     background-position: 50px 0;
     display: flex;
+}
+#logo-rbnb {
+  height: 100%;
+  /* margin-left: 50px; */
+  cursor: pointer;
 }
 .menu-items{
     font-family: 'Roboto Condensed', sans-serif;
@@ -78,22 +83,26 @@
     display: flex;
     /* height: calc(100vh - 100px); */
 }
-.home-contain{
-    width: 50%;
-    height: 100%;
-    padding: 50px 100px;
+.home-contain {
+  width: 50%;
+  /* height: 100%; */
+  padding: 50px 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.home-contain-right{
+/* .home-contain-right{
     display: flex;
     justify-content: center;
-}
+    align-items: center;
+} */
 .home-description{
     font-size: 20px;
     text-align: justify;
 }
 .quick-search {
     height: 450px;
-    width: 330px;
+    width: 430px;
     background-color: white;
     border-radius: 6px;
     padding: 60px;

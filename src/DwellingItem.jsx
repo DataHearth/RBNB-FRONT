@@ -1,30 +1,35 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import './Search.css';
+import './css/search.css';
 import './js/searchScript';
 import { withRouter } from 'react-router-dom';
 
 class DwellingItem extends Component {
-  render() {
-    const { dwelling } = this.props;
+  constructor(props) {
+    super(props);
+    this.dwelling = this.props.dwelling;
     // ! Pour toi c'est le remplacement de backgroundUrl
     // const [pic] = dwelling.pictures;
+  }
+
+
+  render() {
     return (
       <div className="dwelling">
         <div className="pic" />
         <div className="text">
           <div className="title-descr">
-            <div className="title">{dwelling.title}</div>
+            <div className="title">{this.dwelling.title}</div>
             <div className="descr">
-              {dwelling.resident}
+              {this.dwelling.resident}
               {' '}
               étudiants - Studio -
-              {dwelling.rooms}
+              {this.dwelling.rooms}
               {' '}
               chambres
               <br />
-              {dwelling.services}
+              {this.dwelling.services}
             </div>
           </div>
           <div className="mark">
@@ -35,6 +40,4 @@ class DwellingItem extends Component {
     );
   }
 }
-
-
 export default withRouter(DwellingItem);

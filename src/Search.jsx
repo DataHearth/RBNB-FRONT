@@ -3,20 +3,39 @@ import React, { Component } from 'react';
 import './css/search.css';
 import './js/searchScript';
 import { withRouter } from 'react-router-dom';
+import axios from 'axios';
 import Header from './Header';
+import DwellingItem from './DwellingItem';
 
 class Search extends Component {
   constructor(props) {
     super(props);
-    // eslint-disable-next-line react/prop-types
     const { match } = this.props;
-    // eslint-disable-next-line react/prop-types
     this.city = match.params.city;
     this.state = {
-      // eslint-disable-next-line react/no-unused-state
       dwellings: [],
     };
   }
+
+  componentDidMount() {
+    axios.get('http://localhost:8080/dwellings')
+      .then((res) => {
+        console.log('+1');
+        const dwellingsTab = res.data;
+        this.setState({
+          dwellings: dwellingsTab,
+        });
+        console.log(this.state);
+      });
+  }
+
+  displayDwellings() {
+    const dwellings = this.state.dwellings.map((dwelling) => (
+      <DwellingItem key={dwelling.id} dwelling={dwelling} />
+    ));
+    return dwellings;
+  }
+
 
   // eslint-disable-next-line class-methods-use-this
   resultMsg(city) {
@@ -28,20 +47,6 @@ class Search extends Component {
     return msg;
   }
 
-  // getAllDwellings() {
-  //   axios.get('https://rbnb-back.herokuapp.com/dwellings')
-  //     .then((res) => {
-  //       const dwellingsTab = res.data;
-  //       this.setState({
-  //         dwellings: dwellingsTab,
-  //       });
-  //     });
-  //   const dwellings = this.state.dwellings.map((dwelling) => (
-  //     <DwellingItem key={dwelling.id} dwelling={dwelling} />
-  //   ));
-  //   return dwellings;
-  // }
-
 
   render() {
     return (
@@ -51,12 +56,10 @@ class Search extends Component {
           <div>
             <h3 style={{ textAlign: 'left' }}>{this.resultMsg(this.city)}</h3>
           </div>
-          {/* {this.getAllDwellings()} */}
+          { this.displayDwellings() }
         </section>
       </div>
     );
   }
 }
-
-
 export default withRouter(Search);
