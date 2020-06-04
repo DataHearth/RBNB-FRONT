@@ -2,9 +2,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Home from './Home';
+import Home from './Components/Home';
 import Singup from './Components/Singup';
-import Search from './Search';
+import Search from './Components/Search';
 
 export default () => (
   <BrowserRouter>

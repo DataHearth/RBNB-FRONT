@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import $ from 'jquery';
 import Header from './Header';
-import './css/home.css';
-import './js/home';
+import '../css/home.css';
+import '../js/home';
 
 class Home extends Component {
   constructor(props) {

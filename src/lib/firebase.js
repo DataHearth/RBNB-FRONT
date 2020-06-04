@@ -1,4 +1,5 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import firebaseConfig from '../firebaseKey.json';
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);

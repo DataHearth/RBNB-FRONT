@@ -2,7 +2,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import Header from '../Header';
+import Header from './Header';
 import { register } from '../lib/authenticate';
 
 class SingUp extends React.Component {

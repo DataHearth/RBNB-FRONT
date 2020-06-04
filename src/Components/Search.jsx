@@ -1,7 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import './css/search.css';
-import './js/searchScript';
+import '../css/search.css';
+import '../js/searchScript';
 import { withRouter } from 'react-router-dom';
 import Header from './Header';
 
