@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import firebaseConfig from '../../firebaseKey.json';
+import firebaseConfig from '../firebaseKey.json';
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 

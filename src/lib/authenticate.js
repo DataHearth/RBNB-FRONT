@@ -1,5 +1,5 @@
 import axios from 'axios';
-import firebase from '../firebase';
+import firebase from './firebase';
 import logger from './logger';
 
 export async function getAuthToken() {
@@ -37,7 +37,7 @@ export async function authenticate(email, password) {
   try {
     await firebase.auth().signInWithEmailAndPassword(email, password);
 
-    Promise.all(setCurrentToken());
+    await setCurrentToken();
   } catch (error) {
     logger.error(error);
 
@@ -68,13 +68,19 @@ export async function authenticate(email, password) {
 
 export async function register(data) {
   const { email, password } = data;
+  const userForm = new FormData();
+
+  // eslint-disable-next-line no-restricted-syntax
+  for (const [key, value] of Object.entries(data)) {
+    userForm.append(key, value);
+  }
 
   try {
     await firebase.auth().createUserWithEmailAndPassword(email, password);
 
     await setCurrentToken();
 
-    const response = await axios.put('localhost:8080/users', { data }, {
+    const response = await axios.put('http://localhost:8080/users', userForm, {
       headers: {
         'www-authenticate': await getAuthToken(),
       },
@@ -82,17 +88,13 @@ export async function register(data) {
 
     if (response.status === 400) {
       const apiPayloadError = new Error('API wrong payload');
-
       apiPayloadError.code = 'api/wrong-payload';
 
-      logger.error(apiPayloadError);
       throw apiPayloadError;
     } else if (response.status === 500) {
       const apiInternalError = new Error('Internal API error');
-
       apiInternalError.code = 'api/internal-error';
 
-      logger.error(apiInternalError);
       throw apiInternalError;
     }
 
@@ -112,6 +114,12 @@ export async function register(data) {
         break;
       case 'auth/weak-password':
         formattedError.message = 'Mot de passe trop faible';
+        break;
+      case 'api/internal-error':
+        formattedError.message = 'Erreur serveur...\nVeuillez contacter un admin';
+        break;
+      case 'api/wrong-payload':
+        formattedError.message = 'Erreur de validation';
         break;
       default:
         formattedError.message = 'Erreur interne...\nVeuillez réessayer ou contacter un administrateur';

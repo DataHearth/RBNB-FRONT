@@ -2,8 +2,8 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import axios from 'axios';
 import Header from '../Header';
+import { register } from '../lib/authenticate';
 
 class SingUp extends React.Component {
   constructor(props) {
@@ -28,27 +28,16 @@ class SingUp extends React.Component {
   }
 
   handleSubmit(event) {
+    // eslint-disable-next-line react/prop-types
+    const { history } = this.props;
     event.preventDefault();
 
-    const userForm = new FormData();
-
-    // eslint-disable-next-line no-restricted-syntax
-    for (const [key, value] of Object.entries(this.state)) {
-      userForm.append(key, value);
-    }
-
-    axios.put('http://localhost:8080/users', userForm)
-      .then((response) => {
-        if (response.status === 200) {
-          alert('User added');
-          // eslint-disable-next-line no-restricted-globals
-          history.push('/');
-        }
-      }).catch((error) => {
-        // eslint-disable-next-line no-console
-        console.debug(error);
-        alert('ERROR');
-      });
+    register(this.state).then(() => {
+      // eslint-disable-next-line react/prop-types
+      history.push('/');
+    }).catch((error) => {
+      alert(error.message);
+    });
   }
 
   render() {
