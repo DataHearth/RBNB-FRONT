@@ -34,6 +34,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: 50px 0;
+    display: flex;
 }
 .menu-items{
     font-family: 'Roboto Condensed', sans-serif;
@@ -45,9 +46,11 @@
     display: block;
 }
 .item {
-    padding: 10px;
-    cursor: pointer;
-    margin-right: 30px;
+  padding: 10px;
+  cursor: pointer;
+  margin-right: 30px;
+  text-decoration: none;
+  color: initial;
 }
 .item:hover {
     color: #0194ff;
@@ -73,6 +76,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
+    /* height: calc(100vh - 100px); */
 }
 .home-contain{
     width: 50%;
@@ -122,6 +126,16 @@
     border-radius: 6px;
     border: 1px solid #e8e8e8;
     padding-left: 10px;
+}
+.custom-input-for-search {
+    align-self: center;
+    width: 275px;
+    height: 30px;
+    border-radius: 6px;
+    border: 1px solid #e8e8e8;
+    padding-left: 10px;
+    /* left: 50px; */
+    margin-left: 200px;
 }
 .custom-input-split{
     width: 46%;
@@ -215,3 +229,30 @@
         transform: rotate(360deg);
     }
 }
+
+/* SIGN UP PAGE */
+.signup-section{
+  padding: 20px 50px;
+}
+
+/* SEARCH PAGE */
+.search-section{
+  padding: 20px 50px;
+}
+
+/* HOST PAGE */
+.host-section{
+  padding: 20px 50px;
+}
+.section-title{
+  margin-bottom: 30px;
+}
+  .form-horizontal{
+    text-align: left;
+  }
+  .row{
+    /* margin: 0; */
+  }
+  .col-lg-6{
+    padding: 0;
+  }
