@@ -16,9 +16,7 @@ class Header extends Component {
     return (
       <header className="App-header">
         <div className="logo-header">
-          <a href="http://localhost:3000">
-            <img id="logo-rbnb" src="http://localhost:3000/static/media/logo-RBNB.0aa157cc.png" />
-          </a>
+          <a id="logo-rbnb" href="http://localhost:3000" />
           {this.displayTopSearchBar()}
         </div>
         <div className="menu-items">

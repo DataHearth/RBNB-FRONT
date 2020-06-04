@@ -25,11 +25,9 @@ $(document).ready(() => {
 
 
   function adjustBackground() {
-    if ($("section.home")[0] != undefined && $('.quick-search')[0] != undefined) {//If we are in home page
-      if(window.innerHeight >= 650)// 650 is the addition of quick-search heihgt(450), padding(50*2) and header(100)
-        $("section.home").css("height", "calc(100vh - 100px)");
-      else
-        $("section.home").css("height", "auto");
+    if ($('section.home')[0] !== undefined && $('.quick-search')[0] !== undefined) { // If we are in home page
+      if (window.innerHeight >= 650)// 650 is the addition of quick-search heihgt(450), padding(50*2) and header(100)
+      { $('section.home').css('height', 'calc(100vh - 100px)'); } else { $('section.home').css('height', 'auto'); }
     }
   }
 });
