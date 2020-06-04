@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Home from './Home';
-import Singup from './Singup';
+import Singup from './Components/Singup';
 import Search from './Search';
 
 export default () => (
