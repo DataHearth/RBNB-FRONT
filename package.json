@@ -6,14 +6,16 @@
   "dependencies": {
     "@testing-library/react": "^9.5.0",
     "axios": "^0.19.2",
-    "firebase": "^7.11.0",
-    "jquery": "^3.4.1",
+    "firebase": "^7.15.0",
+    "formik": "^2.1.4",
+    "jquery": "^3.5.1",
     "react": "^16.13.0",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
-    "winston": "^3.2.1"
+    "winston": "^3.2.1",
+    "yup": "^0.29.1"
   },
   "scripts": {
     "start": "react-scripts start",
