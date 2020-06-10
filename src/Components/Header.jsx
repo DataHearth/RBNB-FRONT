@@ -1,22 +1,30 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    const { withSearchBar } = props;
+
+    this.withSearchBar = withSearchBar;
+  }
+
   displayTopSearchBar() {
-    // eslint-disable-next-line react/prop-types
-    if (this.props.withSearchBar !== 'true') { // eslint-disable-line react/destructuring-assignment
-      return null;
+    if (this.withSearchBar === 'true') {
+      return (
+        <input id="city" className="custom-input-for-search" type="text" placeholder="Partout" />
+      );
     }
 
-    return (
-      <input id="city" className="custom-input-for-search" type="text" placeholder="Partout" />
-    );
+    return null;
   }
 
   render() {
     return (
       <header className="App-header">
         <div className="logo-header">
+          <Link id="logo-rbnb" to="/" />
           {this.displayTopSearchBar()}
         </div>
         <div className="menu-items">
@@ -36,5 +44,8 @@ class Header extends Component {
   }
 }
 
+Header.propTypes = {
+  withSearchBar: PropTypes.bool.isRequired,
+};
 
 export default withRouter(Header);
