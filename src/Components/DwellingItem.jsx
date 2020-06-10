@@ -1,18 +1,18 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import './css/search.css';
-import './js/searchScript';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import '../css/search.css';
+import '../js/searchScript';
 
 class DwellingItem extends Component {
   constructor(props) {
     super(props);
-    this.dwelling = this.props.dwelling;
+    const { dwelling } = props;
+
+    this.dwelling = dwelling;
     // ! Pour toi c'est le remplacement de backgroundUrl
     // const [pic] = dwelling.pictures;
   }
-
 
   render() {
     return (
@@ -40,4 +40,14 @@ class DwellingItem extends Component {
     );
   }
 }
+
+DwellingItem.propTypes = {
+  dwelling: PropTypes.shape({
+    resident: PropTypes.number.isRequired,
+    rooms: PropTypes.number.isRequired,
+    services: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
 export default withRouter(DwellingItem);
