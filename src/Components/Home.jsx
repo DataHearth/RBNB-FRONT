@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import $ from 'jquery';
@@ -15,10 +14,13 @@ class Home extends Component {
   submitForm(e) {
     e.preventDefault();
     const city = $('#city')[0].value;
+    // eslint-disable-next-line react/prop-types
     const { history } = this.props;
     if (city !== '') {
+      // eslint-disable-next-line react/prop-types
       history.push(`/search/${city}`);
     } else {
+      // eslint-disable-next-line react/prop-types
       history.push('/search/all');
     }
   }
