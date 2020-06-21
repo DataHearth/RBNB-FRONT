@@ -43,10 +43,9 @@ class SingUp extends React.Component {
             initialValues={this.values}
             onSubmit={this.handleSubmit}
             validationSchema={signupSchema}
-            className="form-horizontal"
           >
             {(props) => (
-              <Form>
+              <Form className="form-horizontal">
                 <div className="form-row">
                   <div className="col-md-4 mb-3">
                     <label htmlFor="firstname">

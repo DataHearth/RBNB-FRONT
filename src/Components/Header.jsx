@@ -34,7 +34,7 @@ class Header extends Component {
           <div className="items">
             <Link className="item" to="/host">Héberger</Link>
             <Link className="item" to="/signup">Inscription</Link>
-            <Link className="item" to="/">Connexion</Link>
+            <Link className="item" to="/login">Connexion</Link>
           </div>
         </div>
       </header>
