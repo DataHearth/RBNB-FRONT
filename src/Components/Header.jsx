@@ -2,21 +2,29 @@ import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 
 class Header extends Component {
-  displayTopSearchBar() {
+  constructor(props) {
+    super(props);
     // eslint-disable-next-line react/prop-types
-    if (this.props.withSearchBar !== 'true') { // eslint-disable-line react/destructuring-assignment
-      return null;
+    const { withSearchBar } = props;
+
+    this.withSearchBar = withSearchBar;
+  }
+
+  displayTopSearchBar() {
+    if (this.withSearchBar === 'true') {
+      return (
+        <input id="city" className="custom-input-for-search" type="text" placeholder="Partout" />
+      );
     }
 
-    return (
-      <input id="city" className="custom-input-for-search" type="text" placeholder="Partout" />
-    );
+    return null;
   }
 
   render() {
     return (
       <header className="App-header">
         <div className="logo-header">
+          <a id="logo-rbnb" href="http://localhost:3000/" />
           {this.displayTopSearchBar()}
         </div>
         <div className="menu-items">
@@ -35,6 +43,5 @@ class Header extends Component {
     );
   }
 }
-
 
 export default withRouter(Header);

@@ -1,0 +1,8 @@
+.col-sm-3{
+  max-width: none;
+}
+.icon-price {
+  position: absolute;
+  right: 50px;
+  top: 7px;
+}

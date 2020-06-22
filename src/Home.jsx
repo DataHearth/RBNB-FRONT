@@ -1,10 +1,9 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import $ from 'jquery';
-import Header from './Header';
-import '../css/home.css';
-import '../js/home';
+import Header from './Components/Header';
+import './css/home.css';
+import './js/home';
 
 class Home extends Component {
   constructor(props) {
@@ -15,10 +14,13 @@ class Home extends Component {
   submitForm(e) {
     e.preventDefault();
     const city = $('#city')[0].value;
+    // eslint-disable-next-line react/prop-types
     const { history } = this.props;
     if (city !== '') {
+      // eslint-disable-next-line react/prop-types
       history.push(`/search/${city}`);
     } else {
+      // eslint-disable-next-line react/prop-types
       history.push('/search/all');
     }
   }
@@ -30,12 +32,12 @@ class Home extends Component {
         <section className="home">
           <div className="home-contain home-contain-left">
             <div className="home-description">
-              <h3>Qu&apos;est ce que RBNB ?</h3>
-              <p>
-                RBNB est une plateforme qui s&apos;adresse uniquement aux étudiants.
-                Elle leur permet de louer un logement simplement et en toute tranquillité,
-                afin de faciliter au maximum leur recherche de logement.
-              </p>
+                <h3>Qu&apos;est ce que RBNB ?</h3>
+                <p>
+                  RBNB est une plateforme qui s&apos;adresse uniquement aux étudiants.
+                  Elle leur permet de louer un logement simplement et en toute tranquillité,
+                  afin de faciliter au maximum leur recherche de logement.
+                </p>             
             </div>
           </div>
           <div className="home-contain home-contain-right">

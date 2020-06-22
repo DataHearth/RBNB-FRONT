@@ -1,0 +1,46 @@
+.search-section{
+    /* width: 100vw; */
+    display: block;
+    height: auto;
+}
+.dwelling{
+  border-top: 1px solid black;
+  width: 600px;
+  padding: 15px 0;
+  display: flex;
+}
+.pic {
+  width: 250px;
+  height: 140px;
+  display: block;
+  background-image: url(/static/media/vue-appartement-evian.e0f60ab7.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.text{
+  width: calc(100% - 250px);
+  display: flex;
+}
+.title-descr{
+  width: 80%;
+  height: 100%;
+  text-align: left;
+  padding-left: 10px;
+}
+.title{
+  height: 20%;
+  font-size: 20px;
+}
+.descr {
+  height: 80%;
+  /* padding: 10px 0; */
+  display: flex;
+  align-items: center;
+}
+.mark{
+  width: 20%;
+  height: 100%;
+  text-align: right;
+  padding: 0;
+  background-color: transparent;
+}

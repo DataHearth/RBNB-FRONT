@@ -1,47 +1,53 @@
-/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import axios from 'axios';
+import PropTypes from 'prop-types';
+import Header from './Header';
+import DwellingItem from '../DwellingItem';
 import '../css/search.css';
 import '../js/searchScript';
-import { withRouter } from 'react-router-dom';
-import Header from './Header';
 
 class Search extends Component {
   constructor(props) {
     super(props);
-    // eslint-disable-next-line react/prop-types
-    const { match } = this.props;
-    // eslint-disable-next-line react/prop-types
-    this.city = match.params.city;
+    const { city } = props.match.params;
+
+    this.msg = '';
+    this.city = city;
     this.state = {
-      // eslint-disable-next-line react/no-unused-state
       dwellings: [],
     };
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  resultMsg(city) {
-    let msg = '';
-
-    if (city === 'all') msg = 'Voici les resultats de toute la France';
-    else msg = `Voici les resultats pour ${city}`;
-
-    return msg;
+  componentDidMount() {
+    axios.get('http://localhost:8080/dwellings')
+      .then((res) => {
+        console.log('+1');
+        const dwellingsTab = res.data;
+        this.setState({
+          dwellings: dwellingsTab,
+        });
+        console.log(this.state);
+      });
   }
 
-  // getAllDwellings() {
-  //   axios.get('https://rbnb-back.herokuapp.com/dwellings')
-  //     .then((res) => {
-  //       const dwellingsTab = res.data;
-  //       this.setState({
-  //         dwellings: dwellingsTab,
-  //       });
-  //     });
-  //   const dwellings = this.state.dwellings.map((dwelling) => (
-  //     <DwellingItem key={dwelling.id} dwelling={dwelling} />
-  //   ));
-  //   return dwellings;
-  // }
+  displayDwellings() {
+    const { dwellings } = this.state;
 
+    return dwellings.map((dwelling) => (
+      <DwellingItem key={dwelling.id} dwelling={dwelling} />
+    ));
+  }
+
+  resultMsg() {
+    if (this.city === 'all') {
+      this.msg = 'Voici les resultats de toute la France';
+    } else {
+      this.msg = `Voici les resultats pour ${this.city}`;
+    }
+
+    return <h3 style={{ textAlign: 'left' }}>{this.msg}</h3>;
+  }
 
   render() {
     return (
@@ -49,14 +55,30 @@ class Search extends Component {
         <Header withSearchBar="true" />
         <section className="search-section">
           <div>
-            <h3 style={{ textAlign: 'left' }}>{this.resultMsg(this.city)}</h3>
+            {this.resultMsg}
           </div>
-          {/* {this.getAllDwellings()} */}
+          { this.displayDwellings() }
         </section>
       </div>
     );
   }
 }
 
+Search.propTypes = {
+  match: {
+    params: {
+      city: PropTypes.string,
+    },
+  },
+  msg: PropTypes.string.isRequired,
+};
+
+Search.defaultProps = {
+  match: {
+    params: {
+      city: 'annecy',
+    },
+  },
+};
 
 export default withRouter(Search);
