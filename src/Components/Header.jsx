@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 class Header extends Component {
   constructor(props) {
     super(props);
+    // eslint-disable-next-line react/prop-types
     const { withSearchBar } = props;
 
     this.withSearchBar = withSearchBar;
@@ -43,9 +43,5 @@ class Header extends Component {
     );
   }
 }
-
-Header.propTypes = {
-  withSearchBar: PropTypes.bool.isRequired,
-};
 
 export default withRouter(Header);
