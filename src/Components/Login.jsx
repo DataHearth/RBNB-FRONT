@@ -5,6 +5,7 @@ import {
 } from 'formik';
 import loginSchema from './models/login';
 import { authenticate } from '../lib/authenticate';
+import Header from './Header';
 
 class Login extends Component {
   constructor(props) {
@@ -32,28 +33,44 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <Formik
-          initialValues={this.values}
-          onSubmit={this.handleSubmit}
-          validationSchema={loginSchema}
-        >
-          {() => (
-            <Form className="form-horizontal">
-              <label htmlFor="email">
-                Email:
-                <Field type="email" name="email" placeholder="example@email.com" className="form-control" />
-                <ErrorMessage name="email" />
-              </label>
-              <label htmlFor="password">
-                Mot de passe:
-                <Field type="password" name="password" className="form-control" />
-                <ErrorMessage name="password" />
-              </label>
-              <button className="btn btn-primary" type="submit">Envoyer</button>
-            </Form>
-          )}
-        </Formik>
+      <div className="App">
+        <Header withSearchBar="false" />
+        <section className="host-section">
+          <div className="section-title">
+            <h3 style={{ textAlign: 'left' }}>Se connecter</h3>
+          </div>
+          <Formik
+            initialValues={this.values}
+            onSubmit={this.handleSubmit}
+            validationSchema={loginSchema}
+          >
+            {() => (
+              <Form className="form-horizontal">
+                <div className="row">
+                  <div className="col-lg-6">
+                    <div className="form-group">
+                      <label htmlFor="email" className="col-sm-4 control-label">
+                        Email:
+                        <Field type="email" name="email" placeholder="example@email.com" className="form-control" />
+                        <ErrorMessage name="email" />
+                      </label>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="password" className="col-sm-4 control-label">
+                        Mot de passe:
+                        <Field type="password" name="password" className="form-control" />
+                        <ErrorMessage name="password" />
+                      </label>
+                    </div>
+                    <div className="form-group">
+                      <button className="btn btn-primary" type="submit" style={{marginLeft:'15px'}}>Envoyer</button>
+                    </div>
+                  </div>
+                </div>
+              </Form>
+            )}
+          </Formik>
+        </section>
       </div>
     );
   }
