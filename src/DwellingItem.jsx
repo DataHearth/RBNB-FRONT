@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import '../css/search.css';
-import '../js/searchScript';
+import './css/search.css';
+import './js/searchScript';
 
 class DwellingItem extends Component {
   constructor(props) {

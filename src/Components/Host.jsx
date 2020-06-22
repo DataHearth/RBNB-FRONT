@@ -7,7 +7,7 @@ import {
 import axios from 'axios';
 import Header from './Header';
 import '../js/searchScript';
-import './css/host.css';
+import '../css/host.css';
 import hostSchema from './models/host';
 
 class Host extends Component {
@@ -37,10 +37,39 @@ class Host extends Component {
 
     const hostForm = new FormData();
 
+    // values.services = Array.isArray(values.services) ? values.services : [values.services];
+
     // eslint-disable-next-line no-restricted-syntax
-    for (const [key, value] of Object.entries(this.values)) {
-      hostForm.append(key, value);
+    for (const [key, value] of Object.entries(values)) {
+      if (key === 'user') {
+        hostForm.append(key, 'user_object_id');
+      } else if (key === 'rentalType') {
+        hostForm.append(key, 'rental_type');
+      } else if (key === 'services') {
+        if (Array.isArray(values.services)) {
+          for (let index = 0; index < values.services.length; index++) {
+            hostForm.append(key, values.services[index]);
+          }
+          if (values.services.length === 1) {
+            hostForm.append(key, 'empty');
+          }
+        } else {
+          hostForm.append(key, values.services);
+          hostForm.append(key, 'empty');
+        }
+      } else {
+        hostForm.append(key, value);
+      }
     }
+
+    console.log(hostForm.get('services'));
+
+    for (let index = 0; index < 2; index++) {
+      hostForm.append('badges', `badges_object_id${index}`);
+    }
+    hostForm.append('location', 'location_object_id');
+
+    console.log(hostForm);
 
     axios.put('http://localhost:8080/dwellings', hostForm).then((res) => {
       if (res.status === 400) {
@@ -53,6 +82,7 @@ class Host extends Component {
         throw apiInternalError;
       }
       alert(res.data);
+      history.push('/search/all');
     }).catch((error) => {
       alert(error.code);
     });
@@ -216,14 +246,14 @@ class Host extends Component {
                         Photo :
                       </label>
                       <div className="col-sm-8">
-                        <Field
+                        <input
                           type="file"
                           className="form-control"
                           name="pictures"
                           style={{ padding: '3px' }}
-                          // onChange={(event) => {
-                          //   props.setFieldValue('pictures', event.currentTarget.files[0]);
-                          // }}
+                          onChange={(event) => {
+                            props.setFieldValue('pictures', event.currentTarget.files[0]);
+                          }}
                         />
                         <ErrorMessage name="pictures" />
                       </div>

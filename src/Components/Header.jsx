@@ -24,7 +24,7 @@ class Header extends Component {
     return (
       <header className="App-header">
         <div className="logo-header">
-          <Link id="logo-rbnb" to="/" />
+          <a id="logo-rbnb" href="http://localhost:3000/" />
           {this.displayTopSearchBar()}
         </div>
         <div className="menu-items">

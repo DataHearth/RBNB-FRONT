@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import Header from './Header';
-import DwellingItem from './DwellingItem';
+import DwellingItem from '../DwellingItem';
 import '../css/search.css';
 import '../js/searchScript';
 
