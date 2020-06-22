@@ -52,10 +52,10 @@ class Search extends Component {
     if (this.props.match.params.city === 'all') {
       this.msg = 'Voici les resultats de toute la France';
     } else {
-      this.msg = `Voici les resultats pour ${this.city}`;
+      msg = `Voici les resultats pour ${this.city}`;
     }
 
-    return <h3 style={{ textAlign: 'left' }}>{this.msg}</h3>;
+    return <h3 style={{ textAlign: 'left' }}>{msg}</h3>;
   }
 
   render() {
