@@ -2,24 +2,61 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import {
-  Form, Formik, Field, ErrorMessage,
+  Formik, Field, ErrorMessage, Form,
 } from 'formik';
-import hostSchema from './models/host';
+import axios from 'axios';
 import Header from './Header';
 import '../js/searchScript';
-import '../css/search.css';
+import './css/host.css';
+import hostSchema from './models/host';
 
 class Host extends Component {
   constructor(props) {
     super(props);
-
     this.handleSubmit = this.handleSubmit.bind(this);
     this.values = {
-
+      user: '',
+      title: '',
+      description: '',
+      price: '',
+      resident: '',
+      rentalType: '',
+      smoking: '',
+      type: '',
+      pictures: '',
+      rooms: '',
+      services: '',
     };
   }
 
   handleSubmit(values, { setSubmitting }) {
+    // eslint-disable-next-line react/prop-types
+    const { history } = this.props;
+
+    console.log(values);
+
+    const hostForm = new FormData();
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const [key, value] of Object.entries(this.values)) {
+      hostForm.append(key, value);
+    }
+
+    axios.put('http://localhost:8080/dwellings', hostForm).then((res) => {
+      if (res.status === 400) {
+        const apiPayloadError = new Error('API wrong payload');
+        apiPayloadError.code = 'api/wrong-payload';
+        throw apiPayloadError;
+      } else if (res.status === 500) {
+        const apiInternalError = new Error('Internal API error');
+        apiInternalError.code = 'api/internal-error';
+        throw apiInternalError;
+      }
+      alert(res.data);
+    }).catch((error) => {
+      alert(error.code);
+    });
+
     setSubmitting(false);
   }
 
@@ -35,6 +72,7 @@ class Host extends Component {
             initialValues={this.values}
             onSubmit={this.handleSubmit}
             validationSchema={hostSchema}
+            className="form-horizontal"
           >
             {(props) => (
               <Form className="form-horizontal">
@@ -42,111 +80,210 @@ class Host extends Component {
                   <div className="col-lg-6">
                     <div className="form-group">
                       <label className="col-sm-3 control-label">
-                        Civilité :
                         <div className="col-sm-8">
-                          <Field type="text" name="civilite" className="form-control" required />
+                          <Field
+                            type="hidden"
+                            className="form-control"
+                            name="user"
+                            value="aaaaaaaaaaaa"
+                          />
+                          <ErrorMessage name="user" />
                         </div>
                       </label>
                     </div>
                     <div className="form-group">
-                      <label className="col-sm-3 control-label">
-                        Nom :
-                        <div className="col-sm-8">
-                          <Field type="text" className="form-control" name="lastname" required />
-                        </div>
+                      <label htmlFor="title" className="col-sm-3 control-label">
+                        Titre de l'annonce :
                       </label>
+                      <div className="col-sm-8">
+                        <Field
+                          type="text"
+                          className="form-control"
+                          name="title"
+                        />
+                        <ErrorMessage name="title" />
+                      </div>
                     </div>
                     <div className="form-group">
-                      <label className="col-sm-3 control-label">
-                        Prenom :
-                        <div className="col-sm-8">
-                          <Field type="text" className="form-control" name="firstname" required />
-                        </div>
+                      <label
+                        htmlFor="description"
+                        className="col-sm-3 control-label"
+                      >
+                        Description de l'annonce :
                       </label>
+                      <div className="col-sm-8">
+                        <Field
+                          as="textarea"
+                          className="form-control"
+                          name="description"
+                        />
+                        <ErrorMessage name="description" />
+                      </div>
                     </div>
                     <div className="form-group">
-                      <label htmlFor="mail" className="col-sm-3 control-label">
-                        Email :
-                        <div className="col-sm-8">
-                          <Field type="email" className="form-control" name="email" required />
-                        </div>
+                      <label htmlFor="price" className="col-sm-3 control-label">
+                        Prix :
                       </label>
+                      <div className="col-sm-8">
+                        <div className="icon-price">€</div>
+                        <Field
+                          type="number"
+                          className="form-control"
+                          name="price"
+                        />
+                        <ErrorMessage name="price" />
+                      </div>
                     </div>
                     <div className="form-group">
-                      <label className="col-sm-3 control-label">
-                        Téléphone :
-                        <div className="col-sm-8">
-                          <Field type="text" className="form-control" name="phone" required />
-                        </div>
+                      <label htmlFor="resident" className="col-sm-3 control-label">
+                        Nombre de resident :
                       </label>
+                      <div className="col-sm-8">
+                        <Field
+                          as="select"
+                          className="form-control"
+                          name="resident"
+                        >
+                          <option value="0">-</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </Field>
+                        <ErrorMessage name="resident" />
+                      </div>
+                    </div>
+                    <div className="form-group">
+                      <label
+                        htmlFor="rentalType"
+                        className="col-sm-3 control-label"
+                      />
+                      <div className="col-sm-8">
+                        <Field
+                          type="hidden"
+                          className="form-control"
+                          name="rentalType"
+                        />
+                        <ErrorMessage name="rentalType" />
+                      </div>
                     </div>
                   </div>
                   <div className="col-lg-6">
                     <div className="form-group">
-                      <label htmlFor="societe" className="col-sm-3 control-label">
-                        Société
+                      <label htmlFor="smoking" className="col-sm-3 control-label">
+                        Fumeur :
                       </label>
-                      <div className="col-sm-8">
-                        <input type="text" className="form-control" name="societe" id="societe" required="" />
+                      <div className="col-sm-3">
+                        <div className="checkbox inline">
+                          <label>
+                            <Field type="radio" name="smoking" value="true" />
+                            <span className="cc">
+                              <i className="cc-icon glyphicon glyphicon-ok" />
+                            </span>
+                            {' '}
+                            Oui
+                          </label>
+                        </div>
+                        <div className="checkbox inline">
+                          <label>
+                            <Field type="radio" name="smoking" value="false" />
+                            <span className="cc">
+                              <i className="cc-icon glyphicon glyphicon-ok" />
+                            </span>
+                            {' '}
+                            Non
+                          </label>
+                        </div>
+                        <ErrorMessage name="smoking" />
                       </div>
                     </div>
                     <div className="form-group">
-                      <label htmlFor="adresse" className="col-sm-3 control-label">
-                        Adresse
+                      <label htmlFor="type" className="col-sm-3 control-label">
+                        Type de bien :
                       </label>
                       <div className="col-sm-8">
-                        <input type="text" className="form-control" name="adresse" id="adresse" required="" />
+                        <Field
+                          type="text"
+                          className="form-control"
+                          name="type"
+                        />
+                        <ErrorMessage name="type" />
                       </div>
                     </div>
                     <div className="form-group">
-                      <label htmlFor="cp" className="col-sm-3 control-label">Code Postal</label>
+                      <label htmlFor="pictures" className="col-sm-3 control-label">
+                        Photo :
+                      </label>
                       <div className="col-sm-8">
-                        <input type="text" className="form-control" name="cp" id="cp" />
+                        <Field
+                          type="file"
+                          className="form-control"
+                          name="pictures"
+                          style={{ padding: '3px' }}
+                          // onChange={(event) => {
+                          //   props.setFieldValue('pictures', event.currentTarget.files[0]);
+                          // }}
+                        />
+                        <ErrorMessage name="pictures" />
                       </div>
                     </div>
                     <div className="form-group">
-                      <label htmlFor="ville" className="col-sm-3 control-label">
-                        Ville
+                      <label htmlFor="rooms" className="col-sm-3 control-label">
+                        Nombre de chambre :
                       </label>
                       <div className="col-sm-8">
-                        <input type="text" name="ville" className="form-control" id="ville" />
+                        <Field as="select" className="form-control" name="rooms">
+                          <option value="0">-</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </Field>
+                        <ErrorMessage name="rooms" />
                       </div>
                     </div>
                     <div className="form-group">
-                      <label htmlFor="pays" className="col-sm-3 control-label">
-                        Pays
+                      <label htmlFor="services" className="col-sm-3 control-label">
+                        Service(s) proposé(s) :
                       </label>
-                      <div className="col-sm-8">
-                        <input type="text" className="form-control" name="pays" id="pays" />
+                      <div className="col-sm-3">
+                        <div className="checkbox inline">
+                          <label>
+                            <Field type="checkbox" name="services" value="Micro-ondes" />
+                            <span className="cc">
+                              <i className="cc-icon glyphicon glyphicon-ok" />
+                            </span>
+                            {' '}
+                            Micro-ondes
+                          </label>
+                        </div>
+                        <div className="checkbox inline">
+                          <label>
+                            <Field type="checkbox" name="services" value="Lave-vaisselle" />
+                            <span className="cc">
+                              <i className="cc-icon glyphicon glyphicon-ok" />
+                            </span>
+                            {' '}
+                            Lave-vaisselle
+                          </label>
+                        </div>
+                        <div className="checkbox inline">
+                          <label>
+                            <Field type="checkbox" name="services" value="Piscine" />
+                            <span className="cc">
+                              <i className="cc-icon glyphicon glyphicon-ok" />
+                            </span>
+                            {' '}
+                            Piscine
+                          </label>
+                        </div>
+                        <ErrorMessage name="services" />
                       </div>
                     </div>
-                    {/* <div className="form-group">
-                  <div className="checkbox inline">
-                    <label>
-                      <input type="checkbox" value="" checked="" />
-                      <span className="cc"><i className="cc-icon glyphicon glyphicon-ok" /></span>
-                      {' '}
-                      Option1
-                    </label>
                   </div>
-                  <div className="checkbox inline">
-                    <label>
-                      <input type="checkbox" value="" checked="" />
-                      <span className="cc"><i className="cc-icon glyphicon glyphicon-ok" /></span>
-                      {' '}
-                      Option 2
-                    </label>
-                  </div>
-                  <div className="checkbox inline">
-                    <label>
-                      <input type="checkbox" value={this.state.myValue} onChange={this.handleChange} checked="" />
-                      <span className="cc"><i className="cc-icon glyphicon glyphicon-ok" /></span>
-                      {' '}
-                      Option 3
-                    </label>
-                  </div>
-                </div> */}
-                  </div>
+                  <button className="btn btn-primary" type="submit">Envoyer</button>
                 </div>
               </Form>
             )}
@@ -156,6 +293,5 @@ class Host extends Component {
     );
   }
 }
-
 
 export default withRouter(Host);
