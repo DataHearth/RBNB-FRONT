@@ -9,6 +9,7 @@ import { authenticate } from '../lib/authenticate';
 class Login extends Component {
   constructor(props) {
     super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.values = {
       email: '',
       password: '',
@@ -19,7 +20,7 @@ class Login extends Component {
     // eslint-disable-next-line react/prop-types
     const { history } = this.props;
     const { email, password } = values;
-
+    console.log('here');
     authenticate(email, password)
     // eslint-disable-next-line react/prop-types
       .then(() => history.push('/'))
@@ -45,7 +46,7 @@ class Login extends Component {
                 <ErrorMessage name="email" />
               </label>
               <label htmlFor="password">
-                Email:
+                Mot de passe:
                 <Field type="password" name="password" className="form-control" />
                 <ErrorMessage name="password" />
               </label>
