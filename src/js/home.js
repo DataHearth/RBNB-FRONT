@@ -2,7 +2,7 @@ import $ from 'jquery';
 
 function adjustBackground() {
   if ($('section.home')[0] !== undefined && $('.quick-search')[0] !== undefined) {
-    if (window.innerHeight >= 650) {
+    if (window.innerHeight >= 650 && window.innerWidth >= 900) {
       $('section.home').css('height', 'calc(100vh - 100px)');
     } else {
       $('section.home').css('height', 'auto');
