@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 import Header from './Header';
-import DwellingItem from '../DwellingItem';
+import DwellingItem from './DwellingItem';
 import '../css/search.css';
-import '../js/searchScript';
 
 class Search extends Component {
   constructor(props) {
     super(props);
     const { city } = props.match.params;
-
     this.msg = '';
     this.city = city;
     this.state = {
@@ -22,12 +19,10 @@ class Search extends Component {
   componentDidMount() {
     axios.get('http://localhost:8080/dwellings')
       .then((res) => {
-        console.log('+1');
         const dwellingsTab = res.data;
         this.setState({
           dwellings: dwellingsTab,
         });
-        console.log(this.state);
       });
   }
 
@@ -63,22 +58,5 @@ class Search extends Component {
     );
   }
 }
-
-Search.propTypes = {
-  match: {
-    params: {
-      city: PropTypes.string,
-    },
-  },
-  msg: PropTypes.string.isRequired,
-};
-
-Search.defaultProps = {
-  match: {
-    params: {
-      city: 'annecy',
-    },
-  },
-};
 
 export default withRouter(Search);

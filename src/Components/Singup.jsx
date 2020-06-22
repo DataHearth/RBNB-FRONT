@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import {
@@ -24,15 +23,14 @@ class SingUp extends React.Component {
   }
 
   handleSubmit(values, { setSubmitting }) {
-    // eslint-disable-next-line react/prop-types
     const { history } = this.props;
 
     register(values).then(() => {
-      // eslint-disable-next-line react/prop-types
       history.push('/');
     }).catch((error) => {
       alert(error.message);
     });
+
     setSubmitting(false);
   }
 

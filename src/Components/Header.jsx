@@ -4,9 +4,7 @@ import { withRouter, Link } from 'react-router-dom';
 class Header extends Component {
   constructor(props) {
     super(props);
-    // eslint-disable-next-line react/prop-types
     const { withSearchBar } = props;
-
     this.withSearchBar = withSearchBar;
   }
 

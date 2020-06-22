@@ -1,4 +1,3 @@
-/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import {
@@ -6,9 +5,8 @@ import {
 } from 'formik';
 import axios from 'axios';
 import Header from './Header';
-import '../js/searchScript';
-import '../css/host.css';
 import hostSchema from './models/host';
+import '../css/host.css';
 
 class Host extends Component {
   constructor(props) {
@@ -30,14 +28,15 @@ class Host extends Component {
   }
 
   handleSubmit(values, { setSubmitting }) {
-    // eslint-disable-next-line react/prop-types
     const { history } = this.props;
-
-    console.log(values);
-
     const hostForm = new FormData();
 
-    // values.services = Array.isArray(values.services) ? values.services : [values.services];
+    // * Append all missing data (not implemented functionnalities)
+    // * Loop is necessary to create an array with FormData()
+    for (let index = 0; index < 2; index += 1) {
+      hostForm.append('badges', `badges_object_id${index}`);
+    }
+    hostForm.append('location', 'location_object_id');
 
     // eslint-disable-next-line no-restricted-syntax
     for (const [key, value] of Object.entries(values)) {
@@ -47,7 +46,7 @@ class Host extends Component {
         hostForm.append(key, 'rental_type');
       } else if (key === 'services') {
         if (Array.isArray(values.services)) {
-          for (let index = 0; index < values.services.length; index++) {
+          for (let index = 0; index < values.services.length; index += 1) {
             hostForm.append(key, values.services[index]);
           }
           if (values.services.length === 1) {
@@ -62,29 +61,24 @@ class Host extends Component {
       }
     }
 
-    console.log(hostForm.get('services'));
-
-    for (let index = 0; index < 2; index++) {
-      hostForm.append('badges', `badges_object_id${index}`);
-    }
-    hostForm.append('location', 'location_object_id');
-
-    console.log(hostForm);
-
     axios.put('http://localhost:8080/dwellings', hostForm).then((res) => {
       if (res.status === 400) {
-        const apiPayloadError = new Error('API wrong payload');
+        const apiPayloadError = new Error('Erreur de validation, veuillez contacter un administrateur');
         apiPayloadError.code = 'api/wrong-payload';
         throw apiPayloadError;
       } else if (res.status === 500) {
-        const apiInternalError = new Error('Internal API error');
+        const apiInternalError = new Error('Erreur serveur, veuillez contacter un administrateur');
         apiInternalError.code = 'api/internal-error';
         throw apiInternalError;
       }
-      alert(res.data);
+
       history.push('/search/all');
     }).catch((error) => {
-      alert(error.code);
+      if (error.code === 'api/wrong-payload' || error.code === 'api/internal-error') {
+        alert(error.message);
+      } else {
+        alert('Erreur interne...');
+      }
     });
 
     setSubmitting(false);
@@ -123,7 +117,7 @@ class Host extends Component {
                     </div>
                     <div className="form-group">
                       <label htmlFor="title" className="col-sm-3 control-label">
-                        Titre de l'annonce :
+                        Titre de l&aposannonce :
                       </label>
                       <div className="col-sm-8">
                         <Field
@@ -139,7 +133,7 @@ class Host extends Component {
                         htmlFor="description"
                         className="col-sm-3 control-label"
                       >
-                        Description de l'annonce :
+                        Description de l&aposannonce :
                       </label>
                       <div className="col-sm-8">
                         <Field
