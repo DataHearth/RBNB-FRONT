@@ -110,7 +110,7 @@ class Host extends Component {
                     </div>
                     <div className="form-group">
                       <label htmlFor="title" className="col-sm-3 control-label">
-                        Titre de l&aposannonce :
+                        Titre de l&apos;annonce :
                       </label>
                       <div className="col-sm-8">
                         <Field
@@ -126,7 +126,7 @@ class Host extends Component {
                         htmlFor="description"
                         className="col-sm-3 control-label"
                       >
-                        Description de l&aposannonce :
+                        Description de l&apos;annonce :
                       </label>
                       <div className="col-sm-8">
                         <Field

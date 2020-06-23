@@ -16,6 +16,7 @@ class Search extends Component {
     };
   }
 
+
   componentDidMount() {
     const { history } = this.props;
 
@@ -64,7 +65,7 @@ class Search extends Component {
         <input id="city" className="custom-input-for-search" type="text" placeholder="Partout" />
         <section className="search-section">
           <div>
-            {this.resultMsg()}
+            { this.resultMsg() }
           </div>
           {this.displayDwellings()}
         </section>

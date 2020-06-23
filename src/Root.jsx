@@ -7,6 +7,7 @@ import Home from './Components/Home';
 import Singup from './Components/Singup';
 import Search from './Components/Search';
 import Host from './Components/Host';
+import DwellingDetail from './Components/DwellingDetail';
 import Login from './Components/Login';
 import Header from './Components/Header';
 import EditAccount from './Components/EditAccount';
