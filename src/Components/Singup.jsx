@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import {
   Formik, Field, ErrorMessage, Form,
 } from 'formik';
-import signupSchema from './models/signup';
+import signupSchema from './models/user';
 import Header from './Header';
 import { register } from '../lib/authenticate';
 
