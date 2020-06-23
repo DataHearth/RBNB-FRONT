@@ -8,6 +8,7 @@ import '../js/home';
 class Home extends Component {
   constructor(props) {
     super(props);
+
     this.submitForm = this.submitForm.bind(this);
   }
 
@@ -26,7 +27,7 @@ class Home extends Component {
   render() {
     return (
       <div className="App">
-        <Header withSearchBar="false" />
+        <Header withSearchBar="false" user={this.props.user} />
         <section className="home">
           <div className="home-contain home-contain-left">
             <div className="home-description">

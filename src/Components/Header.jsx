@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import firebase from '../lib/firebase';
 
 class Header extends Component {
   constructor(props) {
     super(props);
-    const { withSearchBar } = props;
-    this.withSearchBar = withSearchBar;
+
+    this.withSearchBar = props.withSearchBar;
+    this.user = props.user;
   }
 
   displayTopSearchBar() {
@@ -16,6 +18,25 @@ class Header extends Component {
     }
 
     return null;
+  }
+
+  displayUser() {
+    if (this.props.user !== null) {
+      return (
+        <div className="items">
+          <button onClick={() => firebase.auth().signOut()}>Se deconnecter</button>
+          <Link className="item" to="/host">Héberger</Link>
+        </div>
+      );
+    }
+
+    return (
+      <div className="items">
+        <Link className="item" to="/host">Héberger</Link>
+        <Link className="item" to="/signup">Inscription</Link>
+        <Link className="item" to="/login">Connexion</Link>
+      </div>
+    );
   }
 
   render() {
@@ -31,11 +52,7 @@ class Header extends Component {
             <div className="line" />
             <div className="line" />
           </div>
-          <div className="items">
-            <Link className="item" to="/host">Héberger</Link>
-            <Link className="item" to="/signup">Inscription</Link>
-            <Link className="item" to="/login">Connexion</Link>
-          </div>
+          {this.displayUser()}
         </div>
       </header>
     );
