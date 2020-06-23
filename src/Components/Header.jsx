@@ -1,21 +1,26 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import firebase from '../lib/firebase';
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    const { withSearchBar } = props;
-    this.withSearchBar = withSearchBar;
-  }
-
-  displayTopSearchBar() {
-    if (this.withSearchBar === 'true') {
+  displayUser() {
+    if (this.props.user !== null) {
       return (
-        <input id="city" className="custom-input-for-search" type="text" placeholder="Partout" />
+        <div className="items">
+          <button type="button" onClick={() => firebase.auth().signOut()}>Se deconnecter</button>
+          <Link className="item" to="/host">Héberger</Link>
+        </div>
       );
     }
 
-    return null;
+    return (
+      <div className="items">
+        <Link className="item" to="/host">Héberger</Link>
+        <Link className="item" to="/signup">Inscription</Link>
+        <Link className="item" to="/login">Connexion</Link>
+      </div>
+    );
   }
 
   render() {
@@ -23,7 +28,6 @@ class Header extends Component {
       <header className="App-header">
         <div className="logo-header">
           <a id="logo-rbnb" href="http://localhost:3000/" />
-          {this.displayTopSearchBar()}
         </div>
         <div className="menu-items">
           <div className="collapse-menu">
@@ -31,11 +35,7 @@ class Header extends Component {
             <div className="line" />
             <div className="line" />
           </div>
-          <div className="items">
-            <Link className="item" to="/host">Héberger</Link>
-            <Link className="item" to="/signup">Inscription</Link>
-            <Link className="item" to="/">Connexion</Link>
-          </div>
+          {this.displayUser()}
         </div>
       </header>
     );

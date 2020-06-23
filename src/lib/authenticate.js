@@ -2,42 +2,9 @@ import axios from 'axios';
 import firebase from './firebase';
 import logger from './logger';
 
-export async function getAuthToken() {
-  const sessionToken = sessionStorage.getItem('authToken');
-
-  if (sessionStorage.getItem('authToken') === null) {
-    try {
-      const firebaseAuthToken = await firebase.auth().currentUser.getIdToken();
-
-      return firebaseAuthToken;
-    } catch (error) {
-      logger.error(error);
-
-      return null;
-    }
-  }
-
-  return sessionToken;
-}
-
-async function setCurrentToken() {
-  try {
-    const token = await firebase.auth().currentUser.getIdToken();
-
-    sessionStorage.setItem('authToken', token);
-    return;
-  } catch (error) {
-    logger.error('Error while setting up session storage auth-token');
-
-    throw error;
-  }
-}
-
 export async function authenticate(email, password) {
   try {
     await firebase.auth().signInWithEmailAndPassword(email, password);
-
-    await setCurrentToken();
   } catch (error) {
     logger.error(error);
 
@@ -78,11 +45,9 @@ export async function register(data) {
   try {
     await firebase.auth().createUserWithEmailAndPassword(email, password);
 
-    await setCurrentToken();
-
     const response = await axios.put('http://localhost:8080/users', userForm, {
       headers: {
-        'www-authenticate': await getAuthToken(),
+        'www-authenticate': firebase.auth().currentUser.getIdToken(),
       },
     });
 

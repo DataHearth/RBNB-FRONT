@@ -1,16 +1,15 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
-import Header from './Header';
 import DwellingItem from './DwellingItem';
 import '../css/search.css';
 
 class Search extends Component {
   constructor(props) {
     super(props);
-    const { city } = props.match.params;
+
     this.msg = '';
-    this.city = city;
     this.state = {
       dwellings: [],
     };
@@ -35,7 +34,7 @@ class Search extends Component {
   }
 
   resultMsg() {
-    if (this.city === 'all') {
+    if (this.props.match.params.city === 'all') {
       this.msg = 'Voici les resultats de toute la France';
     } else {
       this.msg = `Voici les resultats pour ${this.city}`;
@@ -47,12 +46,12 @@ class Search extends Component {
   render() {
     return (
       <div className="App">
-        <Header withSearchBar="true" />
+        <input id="city" className="custom-input-for-search" type="text" placeholder="Partout" />
         <section className="search-section">
           <div>
-            {this.resultMsg}
+            {this.resultMsg()}
           </div>
-          { this.displayDwellings() }
+          {this.displayDwellings()}
         </section>
       </div>
     );

@@ -4,13 +4,13 @@ import {
   Formik, Field, ErrorMessage, Form,
 } from 'formik';
 import axios from 'axios';
-import Header from './Header';
 import hostSchema from './models/host';
 import '../css/host.css';
 
 class Host extends Component {
   constructor(props) {
     super(props);
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.values = {
       user: '',
@@ -87,7 +87,6 @@ class Host extends Component {
   render() {
     return (
       <div className="App">
-        <Header withSearchBar="false" />
         <section className="host-section">
           <div className="section-title">
             <h3 style={{ textAlign: 'left' }}>Devenir hôte</h3>
@@ -109,7 +108,6 @@ class Host extends Component {
                             type="hidden"
                             className="form-control"
                             name="user"
-                            value="aaaaaaaaaaaa"
                           />
                           <ErrorMessage name="user" />
                         </div>
