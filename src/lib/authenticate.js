@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from './axios';
 import firebase from './firebase';
 import logger from './logger';
 
@@ -43,13 +43,11 @@ export async function register(data) {
   }
 
   try {
-    await firebase.auth().createUserWithEmailAndPassword(email, password);
+    const { user } = await firebase.auth().createUserWithEmailAndPassword(email, password);
 
-    const response = await axios.put('http://localhost:8080/users', userForm, {
-      headers: {
-        'www-authenticate': firebase.auth().currentUser.getIdToken(),
-      },
-    });
+    userForm.append('uid', user.uid);
+
+    const response = await axios.put('/users', userForm);
 
     if (response.status === 400) {
       const apiPayloadError = new Error('API wrong payload');
@@ -62,8 +60,6 @@ export async function register(data) {
 
       throw apiInternalError;
     }
-
-    return response.data;
   } catch (error) {
     logger.error(error);
 
