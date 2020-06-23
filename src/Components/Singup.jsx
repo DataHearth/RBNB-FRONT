@@ -4,7 +4,6 @@ import {
   Formik, Field, ErrorMessage, Form,
 } from 'formik';
 import signupSchema from './models/user';
-import Header from './Header';
 import { register } from '../lib/authenticate';
 
 class SingUp extends React.Component {
@@ -38,7 +37,6 @@ class SingUp extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header withSearchBar="false" />
         <section className="signup-section">
           <Formik
             initialValues={this.values}
