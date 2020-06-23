@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
@@ -7,16 +9,15 @@ class Header extends Component {
   displayLoggedInMenu() {
     if (this.props.loggedIn) {
       return (
-        <div className="items">
-          <button type="button" onClick={() => firebase.auth().signOut()}>Se deconnecter</button>
-          <Link className="item" to="/host">Héberger</Link>
+        <div>
+          <button type="button" onClick={() => firebase.auth().signOut()} className="item">Se deconnecter</button>
+          <Link className="item" to="/account/edit">Editer compte</Link>
         </div>
       );
     }
 
     return (
-      <div className="items">
-        <Link className="item" to="/host">Héberger</Link>
+      <div>
         <Link className="item" to="/signup">Inscription</Link>
         <Link className="item" to="/login">Connexion</Link>
       </div>
@@ -35,7 +36,11 @@ class Header extends Component {
             <div className="line" />
             <div className="line" />
           </div>
-          {this.displayLoggedInMenu()}
+          <div className="items">
+            <Link className="item" to="/host">Héberger</Link>
+            <Link className="item" to="/search/all">Rechercher</Link>
+            {this.displayLoggedInMenu()}
+          </div>
         </div>
       </header>
     );
