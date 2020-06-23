@@ -16,8 +16,6 @@ class SingUp extends React.Component {
       lastname: '',
       email: '',
       password: '',
-      address: '',
-      phone: '',
     };
   }
 
