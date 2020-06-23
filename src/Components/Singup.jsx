@@ -3,8 +3,7 @@ import { withRouter } from 'react-router-dom';
 import {
   Formik, Field, ErrorMessage, Form,
 } from 'formik';
-import signupSchema from './models/signup';
-import Header from './Header';
+import signupSchema from './models/user';
 import { register } from '../lib/authenticate';
 
 class SingUp extends React.Component {
@@ -17,9 +16,6 @@ class SingUp extends React.Component {
       lastname: '',
       email: '',
       password: '',
-      address: '',
-      phone: '',
-      picture: '',
     };
   }
 
@@ -38,7 +34,6 @@ class SingUp extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header withSearchBar="false" />
         <section className="signup-section">
           <Formik
             initialValues={this.values}

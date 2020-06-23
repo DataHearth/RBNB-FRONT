@@ -7,5 +7,6 @@ export default yup.object().shape({
   password: yup.string().min(4, 'Un mot de passe doit faire plus de 4 charactères').required('Veuillez entrer un mot de passe'),
   address: yup.string().notRequired(),
   phone: yup.string().notRequired(),
-  picture: yup.mixed().required('Please, provide an profile picture'),
+  // ? Should this be still in the back-end user's model ?
+  picture: yup.mixed().default('http://www.einstein.yu.edu/uploadedImages/PollardLab/PhotoNotAvailable.gif?n=5454'),
 });
