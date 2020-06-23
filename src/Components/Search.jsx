@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../lib/axios';
 import DwellingItem from './DwellingItem';
 import '../css/search.css';
 
@@ -16,7 +16,7 @@ class Search extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8080/dwellings')
+    axios.get('/dwellings')
       .then((res) => {
         const dwellingsTab = res.data;
         this.setState({

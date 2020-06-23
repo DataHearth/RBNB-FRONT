@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import {
   Formik, Field, ErrorMessage, Form,
 } from 'formik';
-import axios from 'axios';
+import axios from '../lib/axios';
 import hostSchema from './models/host';
 import '../css/host.css';
 
@@ -61,7 +61,7 @@ class Host extends Component {
       }
     }
 
-    axios.put('http://localhost:8080/dwellings', hostForm).then((res) => {
+    axios.put('/dwellings', hostForm).then((res) => {
       if (res.status === 400) {
         const apiPayloadError = new Error('Erreur de validation, veuillez contacter un administrateur');
         apiPayloadError.code = 'api/wrong-payload';
