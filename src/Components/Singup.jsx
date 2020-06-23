@@ -10,6 +10,7 @@ import { register } from '../lib/authenticate';
 class SingUp extends React.Component {
   constructor(props) {
     super(props);
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.values = {
       firstname: '',

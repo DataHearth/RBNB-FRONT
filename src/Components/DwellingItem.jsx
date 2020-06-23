@@ -1,30 +1,26 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import '../css/search.css';
 
+// eslint-disable-next-line react/prefer-stateless-function
 class DwellingItem extends Component {
-  constructor(props) {
-    super(props);
-    const { dwelling } = props;
-    this.dwelling = dwelling;
-  }
-
   render() {
     return (
       <div className="dwelling">
         <div className="pic" />
         <div className="text">
           <div className="title-descr">
-            <div className="title">{this.dwelling.title}</div>
+            <div className="title">{this.props.dwelling.title}</div>
             <div className="descr">
-              {this.dwelling.resident}
+              {this.props.dwelling.resident}
               {' '}
               étudiants - Studio -
-              {this.dwelling.rooms}
+              {this.props.dwelling.rooms}
               {' '}
               chambres
               <br />
-              {this.dwelling.services}
+              {this.props.dwelling.services}
             </div>
           </div>
           <div className="mark">

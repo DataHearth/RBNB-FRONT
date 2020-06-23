@@ -5,11 +5,11 @@ import {
 } from 'formik';
 import loginSchema from './models/login';
 import { authenticate } from '../lib/authenticate';
-import Header from './Header';
 
 class Login extends Component {
   constructor(props) {
     super(props);
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.values = {
       email: '',
@@ -18,23 +18,21 @@ class Login extends Component {
   }
 
   handleSubmit(values, { setSubmitting }) {
-    // eslint-disable-next-line react/prop-types
     const { history } = this.props;
     const { email, password } = values;
-    console.log('here');
+
     authenticate(email, password)
-    // eslint-disable-next-line react/prop-types
       .then(() => history.push('/'))
       .catch((error) => {
         alert(error.message);
       });
+
     setSubmitting(false);
   }
 
   render() {
     return (
       <div className="App">
-        <Header withSearchBar="false" />
         <section className="host-section">
           <div className="section-title">
             <h3 style={{ textAlign: 'left' }}>Se connecter</h3>

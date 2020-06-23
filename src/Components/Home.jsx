@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import $ from 'jquery';
-import Header from './Header';
 import '../css/home.css';
 import '../js/home';
 
@@ -12,6 +11,7 @@ class Home extends Component {
     this.submitForm = this.submitForm.bind(this);
   }
 
+  // TODO: form with formik
   submitForm(e) {
     e.preventDefault();
     const city = $('#city')[0].value;
@@ -27,7 +27,6 @@ class Home extends Component {
   render() {
     return (
       <div className="App">
-        <Header withSearchBar="false" user={this.props.user} />
         <section className="home">
           <div className="home-contain home-contain-left">
             <div className="home-description">
