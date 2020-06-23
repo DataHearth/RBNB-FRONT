@@ -46,8 +46,8 @@ class Root extends Component {
   render() {
     return (
       <BrowserRouter>
+        <Header user={this.state.user} />
         <Switch>
-          <Header user={this.state.user} />
           <Route component={Home} exact path="/" />
           <Route component={Singup} exact path="/signup" />
           <Route component={Login} exact path="/login" />
