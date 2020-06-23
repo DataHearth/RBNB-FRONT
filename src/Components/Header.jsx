@@ -4,8 +4,8 @@ import { withRouter, Link } from 'react-router-dom';
 import firebase from '../lib/firebase';
 
 class Header extends Component {
-  displayUser() {
-    if (this.props.user !== null) {
+  displayLoggedInMenu() {
+    if (this.props.loggedIn) {
       return (
         <div className="items">
           <button type="button" onClick={() => firebase.auth().signOut()}>Se deconnecter</button>
@@ -35,7 +35,7 @@ class Header extends Component {
             <div className="line" />
             <div className="line" />
           </div>
-          {this.displayUser()}
+          {this.displayLoggedInMenu()}
         </div>
       </header>
     );
