@@ -9,6 +9,7 @@ import Search from './Components/Search';
 import Host from './Components/Host';
 import Login from './Components/Login';
 import Header from './Components/Header';
+import EditAccount from './Components/EditAccount';
 
 class Root extends Component {
   constructor(props) {
@@ -45,6 +46,7 @@ class Root extends Component {
       <BrowserRouter>
         <Header loggedIn={this.state.loggedIn} />
         <Switch>
+          <Route component={EditAccount} path="/account/edit" />
           <Route component={Home} exact path="/" />
           <Route component={Singup} exact path="/signup" />
           <Route component={Login} exact path="/login" />
