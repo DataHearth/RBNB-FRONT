@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import axios from '../lib/axios';
 import DwellingItem from './DwellingItem';
 import '../css/search.css';
+import { statusHandler } from '../lib/errorHandler';
 
 class Search extends Component {
   constructor(props) {
@@ -16,12 +17,24 @@ class Search extends Component {
   }
 
   componentDidMount() {
+    const { history } = this.props;
+
     axios.get('/dwellings')
       .then((res) => {
-        const dwellingsTab = res.data;
+        statusHandler(res.status);
+
         this.setState({
-          dwellings: dwellingsTab,
+          dwellings: res.data,
         });
+      })
+      .catch((error) => {
+        if (error.code.startsWith('api/')) {
+          alert(error.message);
+        } else {
+          alert('Erreur interne...');
+        }
+
+        history.push('/');
       });
   }
 
