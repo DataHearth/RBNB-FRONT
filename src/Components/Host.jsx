@@ -110,7 +110,7 @@ class Host extends Component {
                     </div>
                     <div className="form-group">
                       <label htmlFor="title" className="col-sm-3 control-label">
-                        Titre de l&aposannonce :
+                        Titre de l&apos;annonce :
                       </label>
                       <div className="col-sm-8">
                         <Field
@@ -126,7 +126,7 @@ class Host extends Component {
                         htmlFor="description"
                         className="col-sm-3 control-label"
                       >
-                        Description de l&aposannonce :
+                        Description de l&apos;annonce :
                       </label>
                       <div className="col-sm-8">
                         <Field
@@ -135,6 +135,22 @@ class Host extends Component {
                           name="description"
                         />
                         <ErrorMessage name="description" />
+                      </div>
+                    </div>
+                    <div className="form-group">
+                      <label
+                        htmlFor="location"
+                        className="col-sm-3 control-label"
+                      >
+                        Localisation de l&apos;annonce :
+                      </label>
+                      <div className="col-sm-8">
+                        <Field
+                          type="text"
+                          className="form-control"
+                          name="location"
+                        />
+                        <ErrorMessage name="location" />
                       </div>
                     </div>
                     <div className="form-group">

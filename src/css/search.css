@@ -3,19 +3,25 @@
     display: block;
     height: auto;
 }
-.dwelling{
+.dwelling-container{
   border-top: 1px solid black;
-  width: 600px;
   padding: 15px 0;
+}
+.dwelling{
+  width: 600px;
   display: flex;
+  cursor: pointer;
+  border-top: 1px solid black;
+  padding: 15px 0;
 }
 .pic {
   width: 250px;
   height: 140px;
   display: block;
-  background-image: url(/static/media/vue-appartement-evian.e0f60ab7.jpg);
+  /* background-image: url(/static/media/vue-appartement-evian.e0f60ab7.jpg); */
   background-repeat: no-repeat;
   background-size: cover;
+  /* cursor: pointer; */
 }
 .text{
   width: calc(100% - 250px);
@@ -30,6 +36,7 @@
 .title{
   height: 20%;
   font-size: 20px;
+  /* cursor: pointer; */
 }
 .descr {
   height: 80%;
