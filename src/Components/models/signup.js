@@ -9,4 +9,5 @@ export default yup.object().shape({
   phone: yup.string().notRequired(),
   // ? Should this be still in the back-end user's model ?
   picture: yup.mixed().default('http://www.einstein.yu.edu/uploadedImages/PollardLab/PhotoNotAvailable.gif?n=5454'),
+  actype: yup.string().oneOf(['student', 'host']).required(),
 });

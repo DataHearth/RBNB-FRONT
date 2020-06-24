@@ -16,6 +16,7 @@ class SingUp extends React.Component {
       lastname: '',
       email: '',
       password: '',
+      actype: 'host',
     };
   }
 
@@ -82,6 +83,16 @@ class SingUp extends React.Component {
                     <label htmlFor="phone">
                       Téléphone
                       <Field type="text" name="phone" placeholder="0634546577" className="form-control" />
+                      <ErrorMessage name="phone" />
+                    </label>
+                  </div>
+                  <div className="col-md-4 mb-3">
+                    <label htmlFor="phone">
+                      Type de compte
+                      <Field as="select" name="actype" className="form-control">
+                        <option value="host" selected>Herbergeur</option>
+                        <option value="student">Étudiant</option>
+                      </Field>
                       <ErrorMessage name="phone" />
                     </label>
                   </div>
