@@ -62,7 +62,7 @@ class DwellingItem extends Component {
               style={{ color: '#d3b35c' }}
             />
             {' '}
-            4.2
+            Aucune note
           </div>
         </div>
       </div>

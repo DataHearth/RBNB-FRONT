@@ -138,6 +138,22 @@ class Host extends Component {
                       </div>
                     </div>
                     <div className="form-group">
+                      <label
+                        htmlFor="location"
+                        className="col-sm-3 control-label"
+                      >
+                        Localisation de l&apos;annonce :
+                      </label>
+                      <div className="col-sm-8">
+                        <Field
+                          type="text"
+                          className="form-control"
+                          name="location"
+                        />
+                        <ErrorMessage name="location" />
+                      </div>
+                    </div>
+                    <div className="form-group">
                       <label htmlFor="price" className="col-sm-3 control-label">
                         Prix :
                       </label>
