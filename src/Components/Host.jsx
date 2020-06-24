@@ -6,6 +6,7 @@ import {
 import axios from '../lib/axios';
 import hostSchema from './models/host';
 import '../css/host.css';
+import { statusHandler } from '../lib/errorHandler';
 
 class Host extends Component {
   constructor(props) {
@@ -62,19 +63,11 @@ class Host extends Component {
     }
 
     axios.put('/dwellings', hostForm).then((res) => {
-      if (res.status === 400) {
-        const apiPayloadError = new Error('Erreur de validation, veuillez contacter un administrateur');
-        apiPayloadError.code = 'api/wrong-payload';
-        throw apiPayloadError;
-      } else if (res.status === 500) {
-        const apiInternalError = new Error('Erreur serveur, veuillez contacter un administrateur');
-        apiInternalError.code = 'api/internal-error';
-        throw apiInternalError;
-      }
+      statusHandler(res.status);
 
       history.push('/search/all');
     }).catch((error) => {
-      if (error.code === 'api/wrong-payload' || error.code === 'api/internal-error') {
+      if (error.code.startsWith('api/')) {
         alert(error.message);
       } else {
         alert('Erreur interne...');

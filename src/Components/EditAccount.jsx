@@ -8,12 +8,15 @@ import axios from '../lib/axios';
 import firebase from '../lib/firebase';
 import logger from '../lib/logger';
 import editAccountSchema from './models/editAccount';
+import { statusHandler, firebaseAuthHandler } from '../lib/errorHandler';
 
 class EditAccount extends Component {
   constructor(props) {
     super(props);
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.deleteAccount = this.deleteAccount.bind(this);
+    this.deleteRGPD = this.deleteRGPD.bind(this);
     this.state = {
       user: {
         firstname: '',
@@ -25,24 +28,68 @@ class EditAccount extends Component {
         picture: '',
       },
     };
-    this.dbUser = null;
+    this.dbUser = {};
   }
 
   componentDidMount() {
     axios.get(`/users/${firebase.auth().currentUser.uid}`).then((res) => {
-      if (res.status === 204) {
-        const apiPayloadError = new Error('Aucun utilisateur, veuillez contacter un administrateur');
-        apiPayloadError.code = 'api/no-user';
-        throw apiPayloadError;
-      } else if (res.status === 500) {
-        const apiInternalError = new Error('Erreur serveur, veuillez contacter un administrateur');
-        apiInternalError.code = 'api/internal-error';
-        throw apiInternalError;
-      }
-
       this.setState({ user: res.data });
       this.dbUser = res.data;
     });
+  }
+
+  deleteAccount() {
+    const { history } = this.props;
+    firebase.auth().currentUser.delete().then(() => {
+      axios.delete(`/users/${this.dbUser.id}`)
+        .then((res) => {
+          statusHandler(res.status);
+          history.push('/');
+        })
+        .catch((error) => {
+          if (error.code.startsWith('api/')) {
+            alert(error.message);
+          } else {
+            alert('Erreur interne...');
+          }
+          history.push('/');
+        });
+    })
+      .catch((error) => {
+        firebaseAuthHandler(error);
+      })
+      .catch((error) => {
+        alert(error.message);
+        history.push('/');
+      });
+  }
+
+  deleteRGPD() {
+    const { history } = this.props;
+    firebase.auth().currentUser.delete().then(() => {
+      axios.delete(`/rgpd/${this.dbUser.id}`)
+        .then((res) => {
+          statusHandler(res.status);
+          history.push('/');
+        })
+        .catch((error) => {
+          logger.error(error.message, { error });
+          if (error.code.startsWith('api/')) {
+            alert(error.message);
+          } else {
+            alert('Erreur interne...');
+          }
+          history.push('/');
+        });
+    })
+      .catch((error) => {
+        firebaseAuthHandler(error);
+      })
+      .catch((error) => {
+        logger.error(error.message, { error });
+        alert(error.message);
+        history.push('/');
+      });
   }
 
   handleSubmit(values, { setSubmitting }) {
@@ -52,7 +99,7 @@ class EditAccount extends Component {
     // eslint-disable-next-line no-restricted-syntax
     for (const [key, value] of Object.entries(values)) {
       if (key === 'badges') {
-        // TODO: STILL find a solution for this
+        // TODO: find a solution for this
         userForm.append('badges', 'no badge');
         userForm.append('badges', 'no badge');
       } else {
@@ -66,39 +113,19 @@ class EditAccount extends Component {
       firebase.auth().currentUser.updatePassword(values.password)
         .then(() => {
           axios.post(`/users/${this.dbUser.id}`, userForm).then((res) => {
-            if (res.status === 400) {
-              const apiPayloadError = new Error('Erreur de validation, veuillez contacter un administrateur');
-              apiPayloadError.code = 'api/wrong-payload';
-              throw apiPayloadError;
-            } else if (res.status === 500) {
-              const apiInternalError = new Error('Erreur serveur, veuillez contacter un administrateur');
-              apiInternalError.code = 'api/internal-error';
-              throw apiInternalError;
-            }
+            statusHandler(res.status);
 
             history.push('/');
           }).catch((error) => {
             logger.error(error.message, { error });
             alert(error.message);
-            firebase.auth().signOut();
             history.push('/');
           });
         })
+        .catch(firebaseAuthHandler)
         .catch((error) => {
-          let errMsg;
-          switch (error.code) {
-            case 'auth/requires-recent-login':
-              errMsg = 'Votre date de connexion est trop ancienne. Veuillez vous reconnecter et reeffectuer l\'operation';
-              break;
-            case 'auth/weak-password':
-              errMsg = 'Votre mot de passe est trop faible...';
-              break;
-            default:
-              errMsg = 'Erreur interne...';
-              break;
-          }
           logger.error(error.message, { error });
-          alert(errMsg);
+          alert(error.message);
           history.push('/');
         });
 
@@ -179,6 +206,12 @@ class EditAccount extends Component {
             </Form>
           )}
         </Formik>
+
+        <h3>Account settings</h3>
+        <button type="button" className="btn btn-danger" onClick={this.deleteAccount}>Supprimer le compte</button>
+        <button type="button" className="btn btn-danger" onClick={this.deleteRGPD}>
+          Suppression de toute les données utilisateurs (locations, compte, badges, etc...)
+        </button>
       </div>
     );
   }
