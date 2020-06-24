@@ -32,8 +32,10 @@ export async function register(data) {
     statusHandler(response.status);
   } catch (error) {
     logger.error(error.message, { error });
-    if (error.code.startsWith('api/')) {
-      throw error;
+    if (error.code) {
+      if (error.code.startsWith('api/')) {
+        throw error;
+      }
     }
 
     firebaseAuthHandler(error);

@@ -67,8 +67,10 @@ class Host extends Component {
 
       history.push('/search/all');
     }).catch((error) => {
-      if (error.code.startsWith('api/')) {
-        alert(error.message);
+      if (error.code) {
+        if (error.code.startsWith('api/')) {
+          alert(error.message);
+        }
       } else {
         alert('Erreur interne...');
       }

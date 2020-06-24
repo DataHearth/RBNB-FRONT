@@ -28,8 +28,10 @@ class Search extends Component {
         });
       })
       .catch((error) => {
-        if (error.code.startsWith('api/')) {
-          alert(error.message);
+        if (error.code) {
+          if (error.code.startsWith('api/')) {
+            alert(error.message);
+          }
         } else {
           alert('Erreur interne...');
         }

@@ -47,8 +47,10 @@ class EditAccount extends Component {
           history.push('/');
         })
         .catch((error) => {
-          if (error.code.startsWith('api/')) {
-            alert(error.message);
+          if (error.code) {
+            if (error.code.startsWith('api/')) {
+              alert(error.message);
+            }
           } else {
             alert('Erreur interne...');
           }
@@ -74,8 +76,10 @@ class EditAccount extends Component {
         })
         .catch((error) => {
           logger.error(error.message, { error });
-          if (error.code.startsWith('api/')) {
-            alert(error.message);
+          if (error.code) {
+            if (error.code.startsWith('api/')) {
+              alert(error.message);
+            }
           } else {
             alert('Erreur interne...');
           }
