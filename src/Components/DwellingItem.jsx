@@ -20,11 +20,11 @@ class DwellingItem extends Component {
 
   displayServices() {
     let services = '';
-    if (this.dwelling.services.indexOf('empty')) {
+    if (this.dwelling.services.indexOf('empty') >= 0) {
       this.dwelling.services.splice(this.dwelling.services.indexOf('empty'));
     }
 
-    for (let index = 0; index < this.dwelling.services.length; index++) {
+    for (let index = 0; index < this.dwelling.services.length; index += 1) {
       const element = this.dwelling.services[index];
       if (this.dwelling.services.length === 1 || index === this.dwelling.services.length - 1) {
         services += `${element} `;

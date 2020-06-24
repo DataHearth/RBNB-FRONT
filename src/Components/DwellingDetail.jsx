@@ -50,7 +50,7 @@ class DwellingDetail extends Component {
                   </div>
                 </div>
                 <div className="top-right-descr">
-                  <div className="user_img" style={{ backgroundImage: `url(${user.picture === undefined ? require('../images/no-photo.png') : details.pictures[0]})` }} />
+                  <div className="user_img" style={{ backgroundImage: `url(${user.picture === undefined ? require('../images/no-photo.png') : user.picture})` }} />
                   <div className="user_name">{user.firstname}</div>
                 </div>
               </div>

@@ -26,7 +26,7 @@ class Host extends Component {
       pictures: '',
       rooms: '',
       services: '',
-      location:'',
+      location: '',
     };
   }
 
@@ -55,8 +55,11 @@ class Host extends Component {
           if (values.services.length === 1) {
             hostForm.append(key, 'empty');
           }
-        } else {
+        } else if (values.services !== '') {
           hostForm.append(key, values.services);
+          hostForm.append(key, 'empty');
+        } else {
+          hostForm.append(key, 'empty');
           hostForm.append(key, 'empty');
         }
       } else {

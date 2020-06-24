@@ -64,13 +64,13 @@ export const firebaseAuthHandler = (error) => {
       customError.message = 'Votre compte a été désactivé';
       break;
     case 'auth/user-not-found':
-      customError.message = 'Utilisateur non trouvé (email invalide)';
+      customError.message = 'Adresse mail ou mot de passe incorrects';
       break;
     case 'auth/wrong-password':
-      customError.message = 'Mauvais mot de passe';
+      customError.message = 'Adresse mail ou mot de passe incorrects';
       break;
     case 'auth/requires-recent-login':
-      customError.message = 'Votre date de connexion est trop ancienne. Veuillez vous reconnecter et reeffectuer l\'operation';
+      customError.message = 'Votre date de connexion est trop ancienne. Veuillez vous reconnecter et effectuer de nouveau l\'operation';
       break;
     default:
       customError.message = 'Erreur interne...\nVeuillez réessayer ou contacter un administrateur';
