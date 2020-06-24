@@ -3,6 +3,7 @@
   height: 400px;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 .descr-res-container {
   height: auto;
@@ -38,6 +39,7 @@
   border-radius: 50%;
   display: flex;
   margin: auto;
+  background-position: center;
 }
 .user_name {
   text-align: center;

@@ -38,7 +38,7 @@ class DwellingItem extends Component {
   render() {
     return (
       <div onClick={this.handleClick} className="dwelling">
-        <div className="pic" style={{ backgroundImage: `url(${this.props.dwelling.pictures === undefined ? '../images/no-photo.png' : this.props.dwelling.pictures[0]})` }} />
+        <div className="pic" style={{ backgroundImage: `url(${this.props.dwelling.pictures === undefined ? require('../images/no-photo.png') : this.props.dwelling.pictures[0]})` }} />
         <div className="text">
           <div className="title-descr">
             <div className="title">{this.props.dwelling.title}</div>

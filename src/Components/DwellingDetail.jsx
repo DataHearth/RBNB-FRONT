@@ -11,25 +11,33 @@ class DwellingDetail extends Component {
     this.id = id;
     this.state = {
       details: {},
+      user: {},
     };
   }
 
   UNSAFE_componentWillMount() {
     axios.get(`http://localhost:8080/dwellings/${this.id}`)
       .then((res) => {
-        const detailsTab = res.data;
+        const details = res.data;
         this.setState({
-          details: detailsTab,
+          details,
         });
+        axios.get(`http://localhost:8080/users/${this.state.details.user}`)
+          .then((res2) => {
+            const user = res2.data;
+            this.setState({
+              user,
+            });
+          });
       });
   }
 
   render() {
-    const { details } = this.state;
+    const { details, user } = this.state;
     return (
       <div className="App">
         <section className="detail-section">
-          <div className="pictures-container" style={{ backgroundImage: `url(${details.pictures === undefined ? '../images/no-photo.png' : details.pictures[0]})` }} />
+          <div className="pictures-container" style={{ backgroundImage: `url(${details.pictures === undefined ? require('../images/no-photo.png') : details.pictures[0]})` }} />
           <div className="descr-res-container">
             <div className="descr-container">
               <div className="top-descr">
@@ -42,8 +50,8 @@ class DwellingDetail extends Component {
                   </div>
                 </div>
                 <div className="top-right-descr">
-                  <div className="user_img" style={{ backgroundImage: 'url(/static/media/vue-appartement-evian.e0f60ab7.jpg)' }} />
-                  <div className="user_name">Antoine</div>
+                  <div className="user_img" style={{ backgroundImage: `url(${user.picture === undefined ? require('../images/no-photo.png') : details.pictures[0]})` }} />
+                  <div className="user_name">{user.firstname}</div>
                 </div>
               </div>
               <div className="bottom-descr">
@@ -93,11 +101,10 @@ class DwellingDetail extends Component {
                       </select>
                     </div>
                   </div>
-                  <div id="calc-price" className="quick-search-item quick-search-item-button" style={{ justifyContent: 'left', padding: '10px 0' }}>
-                  </div>
+                  <div id="calc-price" className="quick-search-item quick-search-item-button" style={{ justifyContent: 'left', padding: '10px 0' }} />
                   <div className="quick-search-item quick-search-item-button">
                     <div className="quick-search-item-button-button">
-                      <button type="submit" className="custom-button">Réserver</button>
+                      <button type="button" className="custom-button">Réserver</button>
                     </div>
                   </div>
                 </div>

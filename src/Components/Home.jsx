@@ -63,7 +63,7 @@ class Home extends Component {
                 <div className="quick-search-item quick-search-item-input">
                   <div className="quick-search-item-input-title">Nombre d&apos;étudiant(s)</div>
                   <div className="quick-search-item-input-input">
-                    <select className="custom-input" placeholder="Partout">
+                    <select defaultValue='1' className="custom-input" placeholder="Partout">
                       <option>1</option>
                       <option>2</option>
                       <option>3</option>

@@ -7,6 +7,7 @@ import axios from '../lib/axios';
 import hostSchema from './models/host';
 import '../css/host.css';
 import { statusHandler } from '../lib/errorHandler';
+import firebase from '../lib/firebase';
 
 class Host extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class Host extends Component {
       pictures: '',
       rooms: '',
       services: '',
+      location:'',
     };
   }
 
@@ -37,12 +39,12 @@ class Host extends Component {
     for (let index = 0; index < 2; index += 1) {
       hostForm.append('badges', `badges_object_id${index}`);
     }
-    hostForm.append('location', 'location_object_id');
+    // hostForm.append('location', 'location_object_id');
 
     // eslint-disable-next-line no-restricted-syntax
     for (const [key, value] of Object.entries(values)) {
       if (key === 'user') {
-        hostForm.append(key, 'user_object_id');
+        hostForm.append(key, firebase.auth().currentUser.uid);
       } else if (key === 'rentalType') {
         hostForm.append(key, 'rental_type');
       } else if (key === 'services') {
