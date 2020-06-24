@@ -9,19 +9,29 @@ class Header extends Component {
   displayLoggedInMenu() {
     if (this.props.loggedIn) {
       return (
-        <div>
-          <button type="button" onClick={() => firebase.auth().signOut()} className="item">Se deconnecter</button>
+        <span>
           <Link className="item" to="/account/edit">Editer compte</Link>
-        </div>
+          <button type="button" onClick={() => {firebase.auth().signOut(); this.props.history.push('/')}} className="item">Se deconnecter</button>
+        </span>
       );
     }
 
     return (
-      <div>
+      <span>
         <Link className="item" to="/signup">Inscription</Link>
         <Link className="item" to="/login">Connexion</Link>
-      </div>
+      </span>
     );
+  }
+
+  displayHost() {
+    if (this.props.loggedIn) {
+      return (
+        <span>
+          <Link className="item" to="/host">Héberger</Link>
+        </span>
+      );
+    }
   }
 
   render() {
@@ -37,8 +47,8 @@ class Header extends Component {
             <div className="line" />
           </div>
           <div className="items">
-            <Link className="item" to="/host">Héberger</Link>
             <Link className="item" to="/search/all">Rechercher</Link>
+            {this.displayHost()}
             {this.displayLoggedInMenu()}
           </div>
         </div>

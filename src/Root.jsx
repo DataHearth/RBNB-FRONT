@@ -53,6 +53,7 @@ class Root extends Component {
           <Route component={Login} exact path="/login" />
           <Route component={Search} path="/search/:city" />
           <Route component={Host} path="/host" />
+          <Route component={DwellingDetail} path="/dwelling/:id" />
         </Switch>
       </BrowserRouter>
     );

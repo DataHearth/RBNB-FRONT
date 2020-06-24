@@ -50,8 +50,9 @@ class Search extends Component {
   }
 
   resultMsg() {
+    let msg = '';
     if (this.props.match.params.city === 'all') {
-      this.msg = 'Voici les resultats de toute la France';
+      msg = 'Voici les resultats de toute la France';
     } else {
       msg = `Voici les resultats pour ${this.city}`;
     }
@@ -62,12 +63,12 @@ class Search extends Component {
   render() {
     return (
       <div className="App">
-        <input id="city" className="custom-input-for-search" type="text" placeholder="Partout" />
+        <input id="city" className="custom-input-for-search" type="text" placeholder={`${this.props.match.params.city === 'all' ? 'Partout' : this.props.match.params.city}`} />
         <section className="search-section">
           <div>
             { this.resultMsg() }
           </div>
-          {this.displayDwellings()}
+          { this.displayDwellings() }
         </section>
       </div>
     );

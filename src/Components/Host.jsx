@@ -316,7 +316,9 @@ class Host extends Component {
                       </div>
                     </div>
                   </div>
-                  <button className="btn btn-primary" type="submit">Envoyer</button>
+                  <div className="col-sm-8">
+                    <button className="btn btn-primary" type="submit">Envoyer</button>
+                  </div>
                 </div>
               </Form>
             )}

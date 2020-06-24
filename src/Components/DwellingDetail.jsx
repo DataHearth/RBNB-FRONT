@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
-import Header from './Header';
 import '../css/dwellingDetail.css';
 import '../js/dwellingDetail.js';
 
@@ -29,9 +28,8 @@ class DwellingDetail extends Component {
     const { details } = this.state;
     return (
       <div className="App">
-        <Header withSearchBar="true" searchContent="Partout" />
         <section className="detail-section">
-          <div className="pictures-container" style={{ backgroundImage: `url(${details.pictures === undefined ? '/static/media/vue-appartement-evian.e0f60ab7.jpg' : details.pictures[0]})` }} />
+          <div className="pictures-container" style={{ backgroundImage: `url(${details.pictures === undefined ? '../images/no-photo.png' : details.pictures[0]})` }} />
           <div className="descr-res-container">
             <div className="descr-container">
               <div className="top-descr">

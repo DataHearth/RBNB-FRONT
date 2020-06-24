@@ -159,63 +159,81 @@ class EditAccount extends Component {
 
   render() {
     return (
-      <div>
-        <h3>Account informations</h3>
-        <Formik
-          enableReinitialize
-          initialValues={this.state.user}
-          onSubmit={this.handleSubmit}
-          validationSchema={editAccountSchema}
-        >
-          {(props) => (
-            <Form>
-              <div className="form-row">
-                <div className="col-md-4 mb-3">
-                  <label htmlFor="password">
-                    Mot de passe *
-                    <Field type="password" name="password" className="form-control" />
-                    <ErrorMessage name="password" />
-                  </label>
+      <div className="App">
+        <section className="signup-section">
+          <div className="section-title">
+            <h3 style={{ textAlign: 'left' }}>Informations du compte</h3>
+          </div>
+          <Formik
+            enableReinitialize
+            initialValues={this.state.user}
+            onSubmit={this.handleSubmit}
+            validationSchema={editAccountSchema}
+          >
+            {(props) => (
+              <Form>
+                <div className="form-horizontal">
+                  <div className="row">
+                    <div className="col-lg-6">
+                      <div className="form-group">
+                        <label className="col-sm-3 control-label" htmlFor="password">
+                          Mot de passe *
+                        </label>
+                        <div className="col-sm-8">
+                          <Field type="password" name="password" className="form-control" />
+                          <ErrorMessage name="password" />
+                        </div>
+                      </div>
+                      <div className="form-group">
+                        <label className="col-sm-3 control-label" htmlFor="address">
+                          Adresse
+                        </label>
+                        <div className="col-sm-8">
+                          <Field type="text" name="address" placeholder="Route du Cruet, 73550, Les Allues" className="form-control" />
+                          <ErrorMessage name="address" />
+                        </div>
+                      </div>
+                      <div className="form-group">
+                        <label className="col-sm-3 control-label" htmlFor="phone">
+                          Téléphone
+                        </label>
+                        <div className="col-sm-8">
+                          <Field type="text" name="phone" placeholder="0634546577" className="form-control" />
+                          <ErrorMessage name="phone" />
+                        </div>
+                      </div>
+                      <div className="form-group">
+                        <label className="col-sm-3 control-label" htmlFor="picture">
+                          Photo *
+                        </label>
+                        <div className="col-sm-8">
+                          <input
+                            type="file"
+                            name="picture"
+                            style={{ padding: '3px' }}
+                            onChange={(event) => {
+                              props.setFieldValue('picture', event.currentTarget.files[0]);
+                            }}
+                            className="form-control"
+                          />
+                          <ErrorMessage name="picture" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mutliple-btn"><button className="btn btn-primary" type="submit">Modifier</button></div>
+                  <div className="mutliple-btn"><button type="button" className="btn btn-danger" onClick={this.deleteAccount}>Supprimer le compte</button></div>
+                  <div className="mutliple-btn">
+                    <button type="button" className="btn btn-danger" onClick={this.deleteRGPD}>
+                      Suppression de toutes les données utilisateurs (locations, compte, badges, etc...)
+                    </button>
+                  </div>
                 </div>
-                <div className="col-md-4 mb-3">
-                  <label htmlFor="address">
-                    Adresse
-                    <Field type="text" name="address" placeholder="Route du Cruet, 73550, Les Allues" className="form-control" />
-                    <ErrorMessage name="address" />
-                  </label>
-                </div>
-                <div className="col-md-4 mb-3">
-                  <label htmlFor="phone">
-                    Téléphone
-                    <Field type="text" name="phone" placeholder="0634546577" className="form-control" />
-                    <ErrorMessage name="phone" />
-                  </label>
-                </div>
-                <div className="col-md-4 mb-3">
-                  <label htmlFor="picture">
-                    Photo *
-                    <input
-                      type="file"
-                      name="picture"
-                      onChange={(event) => {
-                        props.setFieldValue('picture', event.currentTarget.files[0]);
-                      }}
-                      className="form-control"
-                    />
-                    <ErrorMessage name="picture" />
-                  </label>
-                </div>
-              </div>
-              <button className="btn btn-primary" type="submit">Envoyer</button>
-            </Form>
-          )}
-        </Formik>
 
-        <h3>Account settings</h3>
-        <button type="button" className="btn btn-danger" onClick={this.deleteAccount}>Supprimer le compte</button>
-        <button type="button" className="btn btn-danger" onClick={this.deleteRGPD}>
-          Suppression de toute les données utilisateurs (locations, compte, badges, etc...)
-        </button>
+              </Form>
+            )}
+          </Formik>
+        </section>
       </div>
     );
   }
