@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../lib/axios';
 import '../css/dwellingDetail.css';
-import '../js/dwellingDetail.js';
+import '../js/dwellingDetail';
 
 class DwellingDetail extends Component {
   constructor(props) {
@@ -16,13 +16,13 @@ class DwellingDetail extends Component {
   }
 
   UNSAFE_componentWillMount() {
-    axios.get(`http://localhost:8080/dwellings/${this.id}`)
+    axios.get(`/dwellings/${this.id}`)
       .then((res) => {
         const details = res.data;
         this.setState({
           details,
         });
-        axios.get(`http://localhost:8080/users/${this.state.details.user}`)
+        axios.get(`/users/${this.state.details.user}`)
           .then((res2) => {
             const user = res2.data;
             this.setState({
