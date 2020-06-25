@@ -38,7 +38,7 @@ class Header extends Component {
     return (
       <header className="App-header">
         <div className="logo-header">
-          <a id="logo-rbnb" href="http://localhost:3000/" />
+          <a id="logo-rbnb" href={process.env.NODE_ENV === 'production' ? 'https://rbnb-30af7.web.app/' : 'http://localhost:3000/'} />
         </div>
         <div className="menu-items">
           <div className="collapse-menu">
